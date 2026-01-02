@@ -28,7 +28,7 @@ jobs:
           uses: peaceiris/actions-gh-pages@v4
           with:
               PERSONAL_TOKEN: ${{ secrets.TOKEN }}
-              EXTERNAL_REPOSITORY: HCH1212/giftia_blog
+              EXTERNAL_REPOSITORY: HCH1212/hch1212.github.io
               PUBLISH_BRANCH: main
               PUBLISH_DIR: ./public
               commit_message: auto deploy
