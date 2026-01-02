@@ -1,107 +1,81 @@
-# 基础核心配置（保留你的原有配置，规整为YAML格式）
-baseURL: 'https://hch1212.github.io/'
-languageCode: 'en-us'
-title: 'giftiaのblog'
-theme: 'paper'  # 指定使用paper主题
-enableInlineShortcodes: true
-ignoreErrors: ["error-remote-getjson"]
+# 基础核心配置
+baseURL: 'https://hch1212.github.io/'  # 网站部署根URL
+languageCode: 'en-us'                  # 网站语言代码
+title: 'giftiaのblog'                  # 网站标题
+theme: 'paper'                         # 使用paper主题
+enableInlineShortcodes: true           # 启用行内短代码
+ignoreErrors: ["error-remote-getjson"] # 忽略远程JSON获取错误
 
-# 分页配置（YAML格式，替代原TOML的[pagination]）
+# 分页配置
 pagination:
-  pagerSize: 3
+  pagerSize: 5  # 每页显示5篇文章
 
-# 评论服务配置（disqus，对应原toml的[services]节点）
-# services:
-#   disqus:
-#     shortname: 'YOUR_DISQUS_SHORTNAME'  # 替换为你的Disqus短名称（需在Disqus官网注册获取）
-
-# 主题自定义参数（params，对应原toml的[params]节点）
+# 主题自定义参数
 params:
-  # 颜色风格配置（可选值：linen, wheat, gray, light）
-  color: 'gray'
+  # 颜色风格（可选：linen, wheat, gray, light）
+  color: 'linen'
+  
+  # 社交图标（填写对应平台ID即可显示图标）
+  github: 'hch1212'                    # GitHub账号
+  # twitter: ''                        # 可选：Twitter账号
+  # instagram: ''                      # 可选：Instagram账号
+  # linkedin: ''                       # 可选：LinkedIn账号
+  # mastodon: ''                       # 可选：Mastodon链接
+  # threads: ''                        # 可选：Threads账号
+  # bluesky: ''                        # 可选：Bluesky账号
+  # rss: true                          # 显示RSS订阅图标
 
-  # 头部社交图标配置（不需要的可注释或删除该行）
-  # twitter: 'YOUR_TWITTER_ID'          # twitter.com/YOUR_TWITTER_ID
-  github: 'hch1212'                    # 你的GitHub账号，直接填写hch1212即可
-  # instagram: 'YOUR_INSTAGRAM_ID'       # instagram.com/YOUR_INSTAGRAM_ID
-  # linkedin: 'YOUR_LINKEDIN_ID'         # linkedin.com/in/YOUR_LINKEDIN_ID
-  # mastodon: 'YOUR_MASTODON_LINK'       # 示例格式：'https://mastodon.instance/@xxx'
-  # threads: '@YOUR_THREADS_ID'          # threads.net/@YOUR_THREADS_ID
-  # bluesky: 'YOUR_BLUESKY_ID'           # https://bsky.app/profile/YOUR_BLUESKY_ID
-  # rss: true                            # 显示RSS订阅图标（开启状态）
+  # 首页个人资料
+  avatar: 'https://hch1212.github.io/images/giftia.png'
+  name: 'giftia'                       # 昵称
+  bio: '大切な人といつかまた巡り会えますように。'  # 个人简介
 
-  # 首页个人资料配置
-  avatar: 'giftia\static\images\aila.png'  # 假设图片放在 static/images/aila.png
-  name: 'giftia'                       # 替换为你的昵称（直接填写giftia即可）
-  bio: '大切な人といつかまた巡り会えますように。'        # 替换为你的个人简介，可自定义内容
+  # 功能开关
+  disableHLJS: false                   # 启用代码高亮
+  disablePostNavigation: false         # 启用文章上下篇导航
+  monoDarkIcon: true                   # 单色暗黑模式图标
 
-  # 杂项配置
-  disableHLJS: false                   # 启用highlight.js代码高亮（技术博客推荐，关闭则改为true）
-  disablePostNavigation: false         # 启用文章上下篇导航（提升体验，关闭则改为true）
-  monoDarkIcon: true                   # 显示单色暗黑模式切换图标
-  gravatarCdn: 'https://cdn.v2ex.com/gravatar/'  # Gravatar加速CDN，直接使用默认值
-  math: true                           # 全局启用KaTeX数学公式渲染（适合技术/学术博客）
-  localKatex: false                    # 使用CDN加载KaTeX，无需本地存放文件，更便捷
-  # graphCommentId: "YOUR_GRAPH_COMMENT_ID"  # Graph评论ID（Disqus替代方案，无需可留空）
-  favicon: "favicon.ico"               # 网站图标（放在static目录下，保持默认即可）
-  appleTouchIcon: "apple-touch-icon.png" # 苹果设备触摸图标（放在static目录下，保持默认即可）
-  direction: "ltr"                     # 文字排版方向（ltr=从左到右，RTL语言可改为rtl）
+  # 第三方服务配置
+  gravatarCdn: 'https://cdn.v2ex.com/gravatar/'  # Gravatar加速CDN
+  math: true                           # 全局启用KaTeX数学公式
+  localKatex: false                    # 使用CDN加载KaTeX
+  # graphCommentId: ""                 # 可选：Graph评论ID
+  favicon: "favicon.ico"               # 网站图标（static目录下）
+  appleTouchIcon: "apple-touch-icon.png" # 苹果设备图标
+  direction: "ltr"                     # 文字方向（ltr=从左到右）
 
-# # Giscus评论配置（开源免费，替代Disqus，按需启用）
-# giscus:
-#   repo: 'YOUR_GISCUS_REPO'           # 格式：用户名/仓库名（如hch1212/xxx）
-#   repoId: 'YOUR_GISCUS_REPO_ID'      # Giscus官网生成的仓库ID
-#   category: 'YOUR_GISCUS_CATEGORY'   # Giscus对应的评论分类
-#   categoryId: 'YOUR_GISCUS_CATEGORY_ID' # Giscus分类ID
-#   mapping: 'pathname'
-#   theme: 'light'
-#   lang: 'zh-CN'                      # 评论区语言（中文简体，可改为en-US）
+# Giscus评论系统（需在giscus.app注册后配置）
+# [params.giscus]
+#   repo: 'hch1212/your-repo'          # 仓库地址（用户名/仓库名）
+#   repoId: 'your-repo-id'             # 仓库ID
+#   category: 'Comments'               # 评论分类
+#   categoryId: 'your-category-id'     # 分类ID
+#   mapping: 'pathname'                # 评论与页面的映射方式
+#   theme: 'light'                     # 评论区主题
+#   lang: 'zh-CN'                      # 评论区语言
 
-# 标记语言配置（YAML格式，替代原TOML的[markup]，启用原始HTML渲染）
+# 标记语言配置
 markup:
   goldmark:
     renderer:
-      unsafe: true
-#  highlight:
-#    lineNos: true
+      unsafe: true  # 允许渲染HTML内容（支持<sub>、<sup>等标签）
+  # highlight:
+  #   lineNos: true  # 可选：显示代码行号
 
-# 菜单配置（YAML格式，替代原TOML的[[menu.main]]）
+# 导航菜单配置
 menu:
   main:
-    - identifier: "about"
-      name: "About"
-      url: "/about/"
+    - identifier: "links"
+      name: "Links"
+      url: "/links/"
       weight: 10
-    - identifier: "contact"
-      name: "Contact"
-      url: "/contact/"
-      weight: 10
+    - identifier: "loves"
+      name: "Loves"
+      url: "/loves/"
+      weight: 20  # 权重越大，显示越靠后
 
-# 分类法配置（YAML格式，替代原TOML的[taxonomies]）
+# 内容分类法
 taxonomies:
-  category: "categories"
-  tag: "tags"
-  series: "series"
-
-# 隐私配置（YAML格式，替代原TOML的[privacy]）
-privacy:
-  vimeo:
-    disabled: false
-    simple: true
-  x:
-    disabled: false
-    enableDNT: true
-    simple: true
-  instagram:
-    disabled: false
-    simple: true
-  youtube:
-    disabled: false
-    privacyEnhanced: true
-
-# 服务配置（YAML格式，替代原TOML的[services]）
-services:
-  instagram:
-    disableInlineCSS: true
-  x:
-    disableInlineCSS: true
+  category: "categories"  # 分类
+  tag: "tags"             # 标签
+  series: "series"        # 系列文章
