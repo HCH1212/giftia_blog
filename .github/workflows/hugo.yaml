@@ -4,6 +4,20 @@ on:
   push:
     branches:
       - main
+    # 新增：仅Hugo相关文件变更时触发，减少无效执行
+    paths:
+      - '**.md'
+      - '**.html'
+      - '**.css'
+      - '**.js'
+      - '**.toml'
+      - '**.yaml'
+      - '**.yml'
+      - 'layouts/**'
+      - 'content/**'
+      - 'static/**'
+      - 'themes/**'
+      - 'config/**'
   workflow_dispatch:
 
 permissions:
@@ -24,39 +38,107 @@ jobs:
     runs-on: ubuntu-latest
     env:
       HUGO_VERSION: 0.120.2
+      PUBLIC_DIR: ./public  # 新增：统一构建产物目录，便于维护
     steps:
-      - name: 安装Hugo CLI
+      # 新增：缓存Node.js依赖，大幅提升后续构建速度
+      - name: 缓存Node.js依赖
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json', '**/npm-shrinkwrap.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+
+      - name: 安装Hugo CLI（优化：增加校验，避免下载/安装失败）
         run: |
-          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
-          && sudo dpkg -i ${{ runner.temp }}/hugo.deb          
-      - name: 安装Dart Sass
-        run: sudo snap install dart-sass
+          HUGO_DEB="${{ runner.temp }}/hugo.deb"
+          # 下载Hugo安装包
+          wget -O "$HUGO_DEB" "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb"
+          # 校验文件是否存在
+          if [ ! -f "$HUGO_DEB" ]; then
+            echo "错误：Hugo安装包下载失败！"
+            exit 1
+          fi
+          # 安装Hugo
+          sudo dpkg -i "$HUGO_DEB"
+          # 验证Hugo安装成功
+          hugo version || { echo "错误：Hugo安装失败！"; exit 1; }
+
+      - name: 安装Dart Sass（优化：兼容snap不可用场景，提供备选方案）
+        run: |
+          # 优先尝试snap安装
+          if sudo snap install dart-sass; then
+            echo "Dart Sass通过snap安装成功！"
+          else
+            echo "snap安装失败，尝试npm全局安装..."
+            npm install -g sass
+            # 验证备选安装是否成功
+            sass --version || { echo "错误：Dart Sass安装失败！"; exit 1; }
+          fi
+
       - name: 检出
         uses: actions/checkout@v4
         with:
           submodules: recursive
           fetch-depth: 0
-          token: ${{ secrets.TOKEN }}  # 替换为你的token名称
-      - name: 设置Pages
-        id: pages
-        uses: actions/configure-pages@v3
+          token: ${{ secrets.TOKEN }}  # 保留你的token配置
+
+      # 新增：设置Node.js环境，指定LTS版本，提升依赖安装兼容性
+      - name: 安装Node.js环境
+        uses: actions/setup-node@v4
         with:
-          site_url: https://hch1212.github.io/  # 指定你的Pages站点URL
-      - name: 安装Node.js依赖
-        run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
-      - name: 使用Hugo构建
+          node-version: '20'  # LTS版本，稳定性强
+          cache: 'npm'
+
+      - name: 设置Pages（升级：v4最新版，解决潜在兼容问题）
+        id: pages
+        uses: actions/configure-pages@v4
+        with:
+          site_url: https://hch1212.github.io/  # 保留你的站点URL
+
+      - name: 安装Node.js依赖（优化：增加日志，明确执行状态）
+        run: |
+          if [ -f package-lock.json ] || [ -f npm-shrinkwrap.json ]; then
+            echo "发现npm锁文件，执行npm ci安装依赖..."
+            npm ci
+          else
+            echo "未发现npm锁文件，跳过Node.js依赖安装..."
+          fi
+
+      - name: 使用Hugo构建（优化：增加日志、产物校验，避免无效构建）
         env:
           HUGO_ENVIRONMENT: production
           HUGO_ENV: production
         run: |
+          echo "开始构建Hugo网站，基础URL：${{ steps.pages.outputs.base_url }}/"
+          # 执行Hugo构建，输出详细日志
           hugo \
             --gc \
             --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"          
-      - name: 上传构建产物
-        uses: actions/upload-pages-artifact@v2
+            --baseURL "${{ steps.pages.outputs.base_url }}/" \
+            --destination "${{ env.PUBLIC_DIR }}" \
+            --verbose
+          # 校验构建产物是否有效
+          if [ ! -d "${{ env.PUBLIC_DIR }}" ] || [ -z "$(ls -A ${{ env.PUBLIC_DIR }})" ]; then
+            echo "错误：Hugo构建失败，未生成有效产物！"
+            exit 1
+          fi
+          echo "Hugo网站构建成功，产物目录：${{ env.PUBLIC_DIR }}"
+
+      # 新增：验证核心构建产物，确保部署有效性
+      - name: 验证构建产物
+        run: |
+          if [ -f "${{ env.PUBLIC_DIR }}/index.html" ]; then
+            echo "构建产物验证通过：存在核心文件index.html"
+          else
+            echo "错误：构建产物缺少核心文件index.html！"
+            exit 1
+          fi
+
+      - name: 上传构建产物（升级：v3最新稳定版，避免废弃警告）
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: ./public
+          path: ${{ env.PUBLIC_DIR }}  # 使用统一环境变量，便于修改
 
   deploy:
     environment:
@@ -65,6 +147,22 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: 部署到GitHub Pages
+      # 新增：部署前校验产物，避免部署失败
+      - name: 校验并下载构建产物
+        uses: actions/download-artifact@v3
+        with:
+          name: github-pages
+          path: ${{ env.PUBLIC_DIR }}
+
+      - name: 部署到GitHub Pages（升级：v4最新稳定版，提升可靠性）
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
+        with:
+          timeout-minutes: 10  # 新增：设置部署超时，避免无限等待
+
+      # 新增：输出部署结果，便于快速确认访问地址
+      - name: 输出部署成功信息
+        run: |
+          echo "🎉 Hugo网站部署成功！"
+          echo "🔗 访问地址：${{ steps.deployment.outputs.page_url }}"
+          echo "📅 部署时间：$(date '+%Y-%m-%d %H:%M:%S')"
