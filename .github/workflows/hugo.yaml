@@ -2,68 +2,48 @@ name: 发布Hugo网站到Pages
 
 on:
   push:
-    branches:
-      - main
-  workflow_dispatch:
+    branches: [main]  # 简化分支配置写法
 
-# Pages部署必需权限
+# 精简必需权限，满足部署最小需求
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
-# 并发控制，避免重复部署
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 jobs:
-  build:
+  # 合并构建+部署为单个任务（简化流程，无需跨任务传递产物）
+  build-and-deploy:
     runs-on: ubuntu-latest
-    env:
-      HUGO_VERSION: 0.120.2
-    steps:
-      - name: 安装Hugo CLI
-        run: |
-          HUGO_DEB="${{ runner.temp }}/hugo.deb"
-          wget -O "$HUGO_DEB" "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb"
-          sudo dpkg -i "$HUGO_DEB"
-          hugo version
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
 
-      - name: 检出代码
+    steps:
+      # 步骤1：检出代码（保留核心子模块配置，避免主题缺失）
+      - name: 检出仓库代码
         uses: actions/checkout@v4
         with:
-          submodules: recursive
+          submodules: true
           fetch-depth: 0
-          token: ${{ secrets.TOKEN }}
 
-      # 修复Pages报错：添加enablement参数，自动启用Pages站点
-      - name: 设置Pages（自动启用Pages，解决Not Found报错）
-        id: pages
-        uses: actions/configure-pages@v4
+      # 步骤2：安装指定版本 Hugo 0.154.1
+      - name: 安装Hugo 0.154.1
+        uses: peaceiris/actions-hugo@v2
         with:
-          enablement: true # 核心修复：自动启用Pages，无需手动配置
-          site_url: https://hch1212.github.io/
+          hugo-version: '0.154.1'  # 明确指定所需版本
+          # extended: true  # 若需SCSS/SASS支持，取消注释此行
 
-      - name: 使用Hugo构建
-        run: |
-          hugo \
-            --gc \
-            --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"
+      # 步骤3：构建Hugo产物（核心命令，生成public目录）
+      - name: 构建Hugo网站
+        run: hugo --minify  # 保留压缩优化，默认输出到public目录
 
+      # 步骤4：上传产物（精简配置，默认上传路径即可）
       - name: 上传构建产物
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
 
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: 部署到GitHub Pages
-        id: deployment
+      # 步骤5：部署到GitHub Pages
+      - name: 部署到Pages
+        id: deploy
         uses: actions/deploy-pages@v4
