@@ -2,16 +2,15 @@ name: 发布Hugo网站到Pages
 
 on:
   push:
-    branches: [main]  # 简化分支配置写法
+    branches: [main]
 
-# 精简必需权限，满足部署最小需求
+# 部署必需的最小权限集
 permissions:
   contents: write
   pages: write
   id-token: write
 
 jobs:
-  # 合并构建+部署为单个任务（简化流程，无需跨任务传递产物）
   build-and-deploy:
     runs-on: ubuntu-latest
     environment:
@@ -19,31 +18,32 @@ jobs:
       url: ${{ steps.deploy.outputs.page_url }}
 
     steps:
-      # 步骤1：检出代码（保留核心子模块配置，避免主题缺失）
+      # 检出代码（含主题子模块，避免构建失败）
       - name: 检出仓库代码
         uses: actions/checkout@v4
         with:
           submodules: true
           fetch-depth: 0
 
-      # 步骤2：安装指定版本 Hugo 0.154.1
+      # 安装指定版本 Hugo 0.154.1
       - name: 安装Hugo 0.154.1
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.154.1'  # 明确指定所需版本
-          # extended: true  # 若需SCSS/SASS支持，取消注释此行
+          hugo-version: '0.154.1'
+          # 若使用SCSS/SASS，取消注释下面这行
+          # extended: true
 
-      # 步骤3：构建Hugo产物（核心命令，生成public目录）
+      # 构建Hugo产物（生成public目录，压缩优化）
       - name: 构建Hugo网站
-        run: hugo --minify  # 保留压缩优化，默认输出到public目录
+        run: hugo --minify
 
-      # 步骤4：上传产物（精简配置，默认上传路径即可）
+      # 上传产物供部署使用
       - name: 上传构建产物
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
 
-      # 步骤5：部署到GitHub Pages
+      # 部署到GitHub Pages
       - name: 部署到Pages
         id: deploy
         uses: actions/deploy-pages@v4
