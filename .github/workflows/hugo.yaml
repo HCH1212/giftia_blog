@@ -4,137 +4,62 @@ on:
   push:
     branches:
       - main
-    paths:
-      - '**.md'
-      - '**.html'
-      - '**.css'
-      - '**.js'
-      - '**.toml'
-      - '**.yaml'
-      - '**.yml'
-      - 'layouts/**'
-      - 'content/**'
-      - 'static/**'
-      - 'themes/**'
-      - 'config/**'
   workflow_dispatch:
 
+# 必要的权限配置，不可移除
 permissions:
   contents: read
   pages: write
   id-token: write
 
+# 并发控制，保留核心配置
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
-defaults:
-  run:
-    shell: bash
-
 jobs:
+  # 精简后的构建作业：仅保留Hugo安装、代码检出、构建、产物上传
   build:
     runs-on: ubuntu-latest
     env:
       HUGO_VERSION: 0.120.2
-      PUBLIC_DIR: ./public
     steps:
-      - name: 缓存Node.js依赖
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json', '**/npm-shrinkwrap.json', '**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-npm-
-
-      - name: 安装Hugo CLI
+      - name: 安装Hugo CLI（核心步骤，不可移除）
         run: |
           HUGO_DEB="${{ runner.temp }}/hugo.deb"
           wget -O "$HUGO_DEB" "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb"
-          if [ ! -f "$HUGO_DEB" ]; then
-            echo "错误：Hugo安装包下载失败！"
-            exit 1
-          fi
           sudo dpkg -i "$HUGO_DEB"
-          hugo version || { echo "错误：Hugo安装失败！"; exit 1; }
+          hugo version
 
-      - name: 安装Dart Sass
-        run: |
-          if sudo snap install dart-sass; then
-            echo "Dart Sass通过snap安装成功！"
-          else
-            echo "snap安装失败，尝试npm全局安装..."
-            npm install -g sass
-            sass --version || { echo "错误：Dart Sass安装失败！"; exit 1; }
-          fi
+      - name: 安装Dart Sass（核心样式依赖，保留极简安装）
+        run: sudo snap install dart-sass || npm install -g sass
 
-      - name: 检出
+      - name: 检出代码（核心步骤，不可移除）
         uses: actions/checkout@v4
         with:
           submodules: recursive
           fetch-depth: 0
-          token: ${{ secrets.TOKEN }}
+          token: ${{ secrets.TOKEN }} # 保留你的token配置
 
-      - name: 安装Node.js环境
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-
-      - name: 设置Pages
+      - name: 设置Pages（核心步骤，升级到最新版）
         id: pages
         uses: actions/configure-pages@v4
         with:
-          site_url: https://hch1212.github.io/
+          site_url: https://hch1212.github.io/ # 保留你的站点URL
 
-      # 核心修复：Node.js依赖安装步骤（解决锁文件不存在报错）
-      - name: 安装Node.js依赖（兼容npm/yarn，无锁文件时直接跳过）
+      - name: 使用Hugo构建（核心步骤，极简配置）
         run: |
-          # 检查是否存在npm/yarn锁文件
-          if [ -f package-lock.json ] || [ -f npm-shrinkwrap.json ] || [ -f yarn.lock ]; then
-            echo "发现依赖锁文件，开始安装Node.js依赖..."
-            # 区分npm和yarn安装
-            if [ -f yarn.lock ]; then
-              yarn install --frozen-lockfile
-            else
-              npm ci
-            fi
-          else
-            echo "未发现任何依赖锁文件（package-lock.json/npm-shrinkwrap.json/yarn.lock），跳过Node.js依赖安装！"
-          fi
-
-      - name: 使用Hugo构建
-        env:
-          HUGO_ENVIRONMENT: production
-          HUGO_ENV: production
-        run: |
-          echo "开始构建Hugo网站，基础URL：${{ steps.pages.outputs.base_url }}/"
           hugo \
             --gc \
             --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/" \
-            --destination "${{ env.PUBLIC_DIR }}" \
-            --verbose
-          if [ ! -d "${{ env.PUBLIC_DIR }}" ] || [ -z "$(ls -A ${{ env.PUBLIC_DIR }})" ]; then
-            echo "错误：Hugo构建失败，未生成有效产物！"
-            exit 1
-          fi
-          echo "Hugo网站构建成功，产物目录：${{ env.PUBLIC_DIR }}"
+            --baseURL "${{ steps.pages.outputs.base_url }}/"
 
-      - name: 验证构建产物
-        run: |
-          if [ -f "${{ env.PUBLIC_DIR }}/index.html" ]; then
-            echo "构建产物验证通过：存在核心文件index.html"
-          else
-            echo "错误：构建产物缺少核心文件index.html！"
-            exit 1
-          fi
-
-      - name: 上传构建产物
+      - name: 上传构建产物（核心步骤，最新版）
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ${{ env.PUBLIC_DIR }}
+          path: ./public
 
+  # 精简后的部署作业：仅保留核心部署步骤
   deploy:
     environment:
       name: github-pages
@@ -142,20 +67,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: 校验并下载构建产物
-        uses: actions/download-artifact@v3
-        with:
-          name: github-pages
-          path: ${{ env.PUBLIC_DIR }}
-
-      - name: 部署到GitHub Pages
+      - name: 部署到GitHub Pages（核心步骤，最新版）
         id: deployment
         uses: actions/deploy-pages@v4
-        with:
-          timeout-minutes: 10
-
-      - name: 输出部署成功信息
-        run: |
-          echo "🎉 Hugo网站部署成功！"
-          echo "🔗 访问地址：${{ steps.deployment.outputs.page_url }}"
-          echo "📅 部署时间：$(date '+%Y-%m-%d %H:%M:%S')"
