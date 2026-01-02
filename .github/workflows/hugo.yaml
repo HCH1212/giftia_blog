@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
+      url: https://hch1212.github.io/
 
     steps:
       # 检出代码（含主题子模块，避免构建失败）
