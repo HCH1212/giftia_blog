@@ -26,17 +26,17 @@ jobs:
       - name: 构建Hugo网站
         run: hugo --minify
 
-      # 步骤4：跨仓库部署到 hch1212.github.io 仓库
+      # 步骤4：跨仓库部署到 hch1212.github.io 仓库（已修正参数名）
       - name: 部署到Pages仓库
         uses: peaceiris/actions-gh-pages@v4
         with:
-          # 关键：使用之前添加的 PAT 令牌进行身份验证
-          personal_access_token: ${{ secrets.TOKEN }}
-          # 关键：指定 Pages 仓库的完整地址（格式：用户名/仓库名）
+          # 关键修正：参数名改为 personal_token（对应 v4 版本要求）
+          personal_token: ${{ secrets.TOKEN }}
+          # 保持你的 Pages 仓库地址不变
           external_repository: HCH1212/hch1212.github.io
-          # 部署到 Pages 仓库的 main 分支（hch1212.github.io 仓库默认用 main 分支部署）
+          # 部署到 Pages 仓库的 main 分支不变
           publish_branch: main
-          # Hugo 构建产物目录
+          # Hugo 构建产物目录不变
           publish_dir: ./public
-          # 可选：部署提交信息
+          # 部署提交信息不变
           commit_message: "Deploy from giftia_blog: ${{ github.sha }}"
