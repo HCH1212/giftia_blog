@@ -1,34 +1,70 @@
-name: deploy
+name: 发布Hugo网站到Pages
 
-# 代码提交到main分支时触发github action
 on:
   push:
     branches:
       - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
 
 jobs:
-  deploy:
-    runs-on: ubuntu-24.04
+  build:
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.120.2
     steps:
-        - name: Checkout
-          uses: actions/checkout@v4
-          with:
-              fetch-depth: 0
+      - name: 安装Hugo CLI
+        run: |
+          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
+          && sudo dpkg -i ${{ runner.temp }}/hugo.deb          
+      - name: 安装Dart Sass
+        run: sudo snap install dart-sass
+      - name: 检出
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+          token: ${{ secrets.TOKEN }}  # 替换为你的token名称
+      - name: 设置Pages
+        id: pages
+        uses: actions/configure-pages@v3
+        with:
+          site_url: https://hch1212.github.io/  # 指定你的Pages站点URL
+      - name: 安装Node.js依赖
+        run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
+      - name: 使用Hugo构建
+        env:
+          HUGO_ENVIRONMENT: production
+          HUGO_ENV: production
+        run: |
+          hugo \
+            --gc \
+            --minify \
+            --baseURL "${{ steps.pages.outputs.base_url }}/"          
+      - name: 上传构建产物
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: ./public
 
-        - name: Setup Hugo
-          uses: peaceiris/actions-hugo@v3
-          with:
-              hugo-version: "0.139.2"
-              extended: true
-
-        - name: Build Web
-          run: hugo -D
-
-        - name: Deploy Web
-          uses: peaceiris/actions-gh-pages@v4
-          with:
-              PERSONAL_TOKEN: ${{ secrets.TOKEN }}
-              EXTERNAL_REPOSITORY: HCH1212/hch1212.github.io
-              PUBLISH_BRANCH: main
-              PUBLISH_DIR: ./public
-              commit_message: auto deploy
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: 部署到GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
