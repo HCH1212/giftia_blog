@@ -1,49 +1,42 @@
-name: 发布Hugo网站到Pages
+name: 发布Hugo网站到Pages（跨仓库）
 
 on:
   push:
     branches: [main]
 
-# 部署必需的最小权限集
-permissions:
-  contents: write
-  pages: write
-  id-token: write
-
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: https://hch1212.github.io/
-
     steps:
-      # 检出代码（含主题子模块，避免构建失败）
-      - name: 检出仓库代码
+      # 步骤1：检出源码仓库（giftia_blog）的代码（含主题子模块）
+      - name: 检出Hugo源码
         uses: actions/checkout@v4
         with:
           submodules: true
           fetch-depth: 0
 
-      # 安装指定版本 Hugo 0.154.1
+      # 步骤2：安装指定版本 Hugo 0.154.1
       - name: 安装Hugo 0.154.1
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: '0.154.1'
-          # 若使用SCSS/SASS，取消注释下面这行
-          # extended: true
+          # extended: true  # 需SCSS/SASS支持时取消注释
 
-      # 构建Hugo产物（生成public目录，压缩优化）
+      # 步骤3：构建Hugo产物（生成public目录）
       - name: 构建Hugo网站
         run: hugo --minify
 
-      # 上传产物供部署使用
-      - name: 上传构建产物
-        uses: actions/upload-pages-artifact@v3
+      # 步骤4：跨仓库部署到 hch1212.github.io 仓库
+      - name: 部署到Pages仓库
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: ./public
-
-      # 部署到GitHub Pages
-      - name: 部署到Pages
-        id: deploy
-        uses: actions/deploy-pages@v4
+          # 关键：使用之前添加的 PAT 令牌进行身份验证
+          personal_access_token: ${{ secrets.TOKEN }}
+          # 关键：指定 Pages 仓库的完整地址（格式：用户名/仓库名）
+          external_repository: HCH1212/hch1212.github.io
+          # 部署到 Pages 仓库的 main 分支（hch1212.github.io 仓库默认用 main 分支部署）
+          publish_branch: main
+          # Hugo 构建产物目录
+          publish_dir: ./public
+          # 可选：部署提交信息
+          commit_message: "Deploy from giftia_blog: ${{ github.sha }}"
