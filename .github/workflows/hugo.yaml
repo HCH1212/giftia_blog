@@ -6,60 +6,57 @@ on:
       - main
   workflow_dispatch:
 
-# 必要的权限配置，不可移除
+# Pages部署必需权限
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# 并发控制，保留核心配置
+# 并发控制，避免重复部署
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
-  # 精简后的构建作业：仅保留Hugo安装、代码检出、构建、产物上传
   build:
     runs-on: ubuntu-latest
     env:
       HUGO_VERSION: 0.120.2
     steps:
-      - name: 安装Hugo CLI（核心步骤，不可移除）
+      - name: 安装Hugo CLI
         run: |
           HUGO_DEB="${{ runner.temp }}/hugo.deb"
           wget -O "$HUGO_DEB" "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb"
           sudo dpkg -i "$HUGO_DEB"
           hugo version
 
-      - name: 安装Dart Sass（核心样式依赖，保留极简安装）
-        run: sudo snap install dart-sass || npm install -g sass
-
-      - name: 检出代码（核心步骤，不可移除）
+      - name: 检出代码
         uses: actions/checkout@v4
         with:
           submodules: recursive
           fetch-depth: 0
-          token: ${{ secrets.TOKEN }} # 保留你的token配置
+          token: ${{ secrets.TOKEN }}
 
-      - name: 设置Pages（核心步骤，升级到最新版）
+      # 修复Pages报错：添加enablement参数，自动启用Pages站点
+      - name: 设置Pages（自动启用Pages，解决Not Found报错）
         id: pages
         uses: actions/configure-pages@v4
         with:
-          site_url: https://hch1212.github.io/ # 保留你的站点URL
+          enablement: true # 核心修复：自动启用Pages，无需手动配置
+          site_url: https://hch1212.github.io/
 
-      - name: 使用Hugo构建（核心步骤，极简配置）
+      - name: 使用Hugo构建
         run: |
           hugo \
             --gc \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
 
-      - name: 上传构建产物（核心步骤，最新版）
+      - name: 上传构建产物
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
 
-  # 精简后的部署作业：仅保留核心部署步骤
   deploy:
     environment:
       name: github-pages
@@ -67,6 +64,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: 部署到GitHub Pages（核心步骤，最新版）
+      - name: 部署到GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
