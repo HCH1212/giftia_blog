@@ -45,7 +45,7 @@ params:
 
   # 功能开关
   disableHLJS: false            # 代码高亮
-  disablePostNavigation: false  # 上/下一篇文章导航
+  disablePostNavigation: true   # 上/下一篇文章导航
   monoDarkIcon: true            # 暗色模式下单色图标
   showSummary: true             # 首页显示摘要
 
@@ -58,6 +58,21 @@ params:
   favicon: "favicon.ico"
   appleTouchIcon: "apple-touch-icon.png"
   direction: "ltr"
+
+  # 评论
+  giscus:
+    repo: "HCH1212/giftia_blog"
+    repoId: "R_kgDOQycHqg"
+    category: "Announcements"
+    categoryId: "DIC_kwDOQycHqs4C0hEV"
+    mapping: "pathname"
+    strict: "0"
+    reactionsEnabled: "1"
+    emitMetadata: "0"
+    inputPosition: "bottom"
+    theme: "preferred_color_scheme"
+    lang: "zh-CN"
+    loading: "lazy"
 
 # ===============================
 # Markdown 渲染
