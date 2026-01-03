@@ -1,0 +1,22 @@
+{{ define "main" }}
+<div class="post">
+  <h1 class="post-title">{{ .Title }}</h1>
+  <div class="post-content">
+    {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+      <section style="margin-top: 2rem;">
+        <h2 style="border-bottom: 2px solid var(--border); padding-bottom: 5px;">
+          # {{ $name | humanize }}
+        </h2>
+        <ul style="list-style: none; padding-left: 10px;">
+          {{ range $taxonomy.Pages }}
+          <li style="display: flex; justify-content: space-between; margin: 10px 0;">
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+            <span style="color: #999; font-family: monospace;">{{ .Date.Format "2006-01-02" }}</span>
+          </li>
+          {{ end }}
+        </ul>
+      </section>
+    {{ end }}
+  </div>
+</div>
+{{ end }}

@@ -1,10 +1,10 @@
-+++
-title = "Loves"
-description = "Hugo, the world's fastest framework for building websites"
-date = "2019-02-28"
-aliases = ["about-us", "about-hugo", "contact"]
-author = "lee.so"
-+++
+---
+title: "Loves"
+---
+### 📚 书籍
+- 《深入理解计算机系统》
+- 《海伯利安》
 
-- [github.com/nanxiaobei](https://github.com/nanxiaobei)
-- [lee.so](https://lee.so)
+### 🎬 电影
+- 《可塑性记忆》 (Plastic Memories)
+- 《星际穿越》
