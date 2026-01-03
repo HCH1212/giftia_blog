@@ -2,7 +2,92 @@
 title: "Gallery"
 ---
 
-<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px;">
-  <img src="/images/giftia.png" alt="描述1">
-  <img src="/images/giftia.png" alt="描述2">
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; padding: 10px;">
+  <img src="/aila/aila.png" alt="aila" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila1.png" alt="aila1" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila2.png" alt="aila2" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila3.png" alt="aila3" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila4.png" alt="aila4" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila5.jpg" alt="aila5" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila6.gif" alt="aila6" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila7.png" alt="aila7" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila8.png" alt="aila8" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila9.png" alt="aila9" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila10.png" alt="aila10" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila11.png" alt="aila11" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila12.png" alt="aila12" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila13.jpeg" alt="aila13" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila14.jpeg" alt="aila14" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila15.jpeg" alt="aila15" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila16.jpeg" alt="aila16" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila17.jpeg" alt="aila17" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila18.jpeg" alt="aila18" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila19.png" alt="aila19" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila20.jpeg" alt="aila20" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila21.png" alt="aila21" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila22.jpeg" alt="aila22" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila23.jpeg" alt="aila23" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila24.jpeg" alt="aila24" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila25.jpeg" alt="aila25" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila26.jpeg" alt="aila26" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila27.jpeg" alt="aila27" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila28.jpeg" alt="aila28" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila29.jpeg" alt="aila29" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila30.jpeg" alt="aila30" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila31.jpeg" alt="aila31" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila32.jpeg" alt="aila32" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila33.jpeg" alt="aila33" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila34.png" alt="aila34" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila35.jpeg" alt="aila35" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila36.jpeg" alt="aila36" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila37.jpeg" alt="aila37" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila38.jpeg" alt="aila38" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila39.jpeg" alt="aila39" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila40.jpeg" alt="aila40" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila41.jpeg" alt="aila41" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila42.jpeg" alt="aila42" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila43.jpeg" alt="aila43" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila44.jpeg" alt="aila44" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila45.gif" alt="aila45" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila46.jpeg" alt="aila46" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila47.jpeg" alt="aila47" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila48.jpeg" alt="aila48" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila49.jpeg" alt="aila49" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila50.jpeg" alt="aila50" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila51.jpeg" alt="aila51" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila52.jpeg" alt="aila52" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila53.jpeg" alt="aila53" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila54.jpeg" alt="aila54" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila55.jpeg" alt="aila55" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila56.jpeg" alt="aila56" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila57.jpeg" alt="aila57" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila58.jpeg" alt="aila58" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila59.jpeg" alt="aila59" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila60.jpeg" alt="aila60" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila61.jpeg" alt="aila61" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila62.jpeg" alt="aila62" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila63.jpeg" alt="aila63" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila64.jpeg" alt="aila64" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila65.jpeg" alt="aila65" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila66.jpeg" alt="aila66" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila67.jpeg" alt="aila67" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila68.jpeg" alt="aila68" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila69.png" alt="aila69" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila70.jpeg" alt="aila70" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila71.jpeg" alt="aila71" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila72.jpeg" alt="aila72" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila73.jpeg" alt="aila73" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila74.jpeg" alt="aila74" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila75.jpeg" alt="aila75" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila76.jpeg" alt="aila76" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila77.jpeg" alt="aila77" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila78.png" alt="aila78" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila79.png" alt="aila79" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila80.png" alt="aila80" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila81.jpg" alt="aila81" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila82.jpg" alt="aila82" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila83.jpg" alt="aila83" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila84.png" alt="aila84" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila85.png" alt="aila85" style="width: 100%; border-radius: 8px; object-fit: cover;">
+  <img src="/aila/aila86.png" alt="aila86" style="width: 100%; border-radius: 8px; object-fit: cover;">
 </div>
