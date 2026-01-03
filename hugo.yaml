@@ -77,7 +77,7 @@ menu:
     - identifier: "loves"
       name: "Loves"
       url: "/loves/"
-      weight: 10
+      weight: 30
     - identifier: "links"
       name: "Links"
       url: "/links/"
@@ -85,11 +85,15 @@ menu:
     - identifier: "archives"
       name: "Archives"
       url: "/archives/"
-      weight: 30
+      weight: 10
     - identifier: "gallery"
       name: "Gallery"
       url: "/gallery/"
       weight: 40
+    - identifier: "about"
+      name: "About"
+      url: "/about/"
+      weight: 50
 
 # ===============================
 # 分类系统

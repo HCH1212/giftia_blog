@@ -1,8 +1,15 @@
 ---
 title: "Links"
 ---
+
 ### 友情链接
-- [Example Blog](https://example.com) —— 这是一个例子
-- [Gemini](https://gemini.google.com) —— 我的 AI 助手
+- [markity](https://markity.github.io/)
+- [lanlance](https://lanlance.cn/)
+- [sfkm](https://sfkm.me/)
+- [sianao](https://sianao.site/)
+- [geektutu](https://geektutu.com/)
+- [ailaart](https://mechabare.art/)
+- [fengfengzhidao](https://www.fengfengzhidao.com/)
+- [bing](https://blog.coldbin.top/)
 
 > 欢迎在评论区或通过邮件申请交换友链。
