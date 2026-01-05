@@ -1,0 +1,48 @@
+---
+title: 'acid 脏读、幻读、不可重复读 事务隔离级别'
+date: 2026-01-05
+lastmod: 2026-01-05
+author: "giftia"
+description: ""
+draft: false
+categories: ["数据库"]
+tags: []
+---
+
+## acid
+1. 原子性（Atomicity）：事务是一个不可分割的工作单位，事务中包括的诸操作要么都做，要么都不做。
+2. 一致性（Consistency）：事务必须是数据库从一个一致性状态变到另一个一致性状态。
+3. 隔离性（Isolation）：一个事务的执行不能被其他事务干扰。
+4. 持久性（Durability）：一个事务一旦提交，它对数据库中数据的改变就应该是永久性的。
+
+> 以下都是基于多个事务并发访问同一数据导致的问题。
+
+## 脏读
+一个事务读取到了其他事务未提交的数据。
+
+## 不可重复读（针对某几条数据）
+同一事务中多次读取同一数据，前后读取的结果不同。（事务2执行update 数据变化）
+
+## 幻读（针对整张表）
+同一事务中多次查询同一范围的数据，前后查询结果数量不同。（事务2执行insert/delete 数据量变化）
+
+## 事务隔离级别
+读未提交、读已提交、可重复读（mysql默认）、串行化。
+
+| 隔离级别 | 脏读 | 不可重复读 | 幻读 |
+|----------|------|-----------|------|
+| READ-UNCOMMITTED | √ | √ | √ |
+| READ-COMMITTED | × | √ | √ |
+| REPEATABLE-READ | × | × | √ (×innodb) |
+| SERIALIZABLE | × | × | × |
+
+> 对于innodb, RR级别下，可以避免幻读。（不过可能有快照读和当前读，还是有可能发生幻读）
+
+* 获取当前事务隔离级别：
+```sql
+SELECT @@tx_isolation;
+```
+* 设置事务隔离级别：
+```sql
+SET SESSION TRANSACTION ISOLATION LEVEL READ-COMMITTED;
+```

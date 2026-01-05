@@ -5,7 +5,7 @@ lastmod: 2026-01-03
 author: "giftia"
 description: ""
 draft: false
-categories: ["技术"]
+categories: ["网络"]
 tags: []
 ---
 
