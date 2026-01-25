@@ -1,7 +1,7 @@
 ---
 title: 'Tcp拥塞控制算法之bbr'
-date: 2026-01-03
-lastmod: 2026-01-03
+date: 2026-01-20
+lastmod: 2026-01-20
 author: "giftia"
 description: ""
 draft: false

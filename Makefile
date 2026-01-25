@@ -6,3 +6,8 @@ git:
 	git add .
 	git commit -m "update"
 	git push
+
+.PHONY: run
+
+run:
+	.\hugo.exe server -D
