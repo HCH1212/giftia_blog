@@ -10,7 +10,7 @@ tags: []
 ---
 
 ## 1.冒泡排序 (Bubble Sort)
-![img](/other/bubbleSort.gif)
+<img src="https://www.runoob.com/wp-content/uploads/2019/03/bubbleSort.gif" style="max-width: 800px;"/>
 
 ```go
 package main
@@ -39,7 +39,7 @@ func BubbleSort(a []int) {
 - 平均情况：O(n²)。
 
 ## 2.选择排序 (Selection Sort)
-![img](/other/selectionSort.gif)
+<img src="https://www.runoob.com/wp-content/uploads/2019/03/selectionSort.gif" style="max-width: 800px;"/>
 
 ```go
 package main
@@ -72,7 +72,7 @@ func SelectionSort(a []int) {
 - 平均情况：O(n²)。
 
 ## 3.插入排序 (Insertion Sort)
-![img](/other/insertionSort.gif)
+<img src="https://www.runoob.com/wp-content/uploads/2019/03/insertionSort.gif" style="max-width: 800px;"/>
 
 ```go
 package main
@@ -103,7 +103,7 @@ func InsertionSort(a []int) {
 - 平均情况：O(n²)。
 
 ## 4.希尔排序 (Shell Sort)
-![img](/other/Sorting_shellsort_anim.gif)
+<img src="https://www.runoob.com/wp-content/uploads/2019/03/Sorting_shellsort_anim.gif" style="max-width: 800px;"/>
 
 1. 选择增量序列：选择一个增量序列（gap sequence），用于将列表分成若干子列表。常见的增量序列有希尔增量（n/2, n/4, ..., 1）等。 
 2. 分组插入排序：按照增量序列将列表分成若干子列表，对每个子列表进行插入排序。 
@@ -147,7 +147,7 @@ func ShellSort(a []int) {
 - 平均情况：O(n log n) 到 O(n²) 之间。
 
 ## 5.归并排序 (Merge Sort)
-![img](/other/mergeSort.gif)
+<img src="https://www.runoob.com/wp-content/uploads/2019/03/mergeSort.gif" style="max-width: 800px;"/>
 
 1. 申请空间，使其大小为两个已经排序序列之和，该空间用来存放合并后的序列； 
 2. 设定两个指针，最初位置分别为两个已经排序序列的起始位置； 
@@ -210,7 +210,7 @@ func merge(left, right []int) []int {
 - 总时间复杂度：O(n log n)。
 
 ## 6.快速排序 (Quick Sort)
-![img](/other/quickSort.gif)
+<img src="https://www.runoob.com/wp-content/uploads/2019/03/quickSort.gif" style="max-width: 800px;"/>
 
 1. 选择基准元素：从列表中选择一个元素作为基准（pivot）。选择方式可以是第一个元素、最后一个元素、中间元素或随机元素。 
 2. 分区：将列表重新排列，使得所有小于基准元素的元素都在基准的左侧，所有大于基准元素的元素都在基准的右侧。基准元素的位置在分区完成后确定。 
@@ -301,8 +301,8 @@ func QuickSortPlus(arr []int, left, right int) {
 - 总时间复杂度：O(n log n)。
 
 ## 7.堆排序 (Heap Sort)
-![img](/other/heapSort.gif)
-![img](/other/Sorting_heapsort_anim.gif)
+<img src="https://www.runoob.com/wp-content/uploads/2019/03/heapSort.gif" style="max-width: 800px;"/>
+<img src="https://www.runoob.com/wp-content/uploads/2019/03/Sorting_heapsort_anim.gif" style="max-width: 800px;"/>
 
 1. 创建一个堆 H[0……n-1]； 
 2. 把堆首（最大值）和堆尾互换； 
@@ -368,7 +368,7 @@ func heapify(arr []int, n, i int) {
 - 总时间复杂度：O(n log n)。****
 
 ## 8.计数排序 (Counting Sort)
-![img](/other/countingSort.gif)
+<img src="https://www.runoob.com/wp-content/uploads/2019/03/countingSort.gif" style="max-width: 800px;"/>
 
 1. 统计频率：遍历待排序的列表，统计每个元素出现的次数，存储在一个计数数组中。
 2. 累加频率：将计数数组中的值累加，得到每个元素在排序后列表中的最后一个位置。
@@ -430,8 +430,8 @@ func CountingSort(arr []int) {
 - 总时间复杂度：O(n + k)，其中 n 是列表长度，k 是数据的范围大小。
 
 ## 9.桶排序 (Bucket Sort)
-![img](/other/Bucket_sort_1.svg_.png)
-![img](/other/Bucket_sort_2.svg_.png)
+<img src="https://www.runoob.com/wp-content/uploads/2019/03/Bucket_sort_1.svg_.png" style="max-width: 800px;"/>
+<img src="https://www.runoob.com/wp-content/uploads/2019/03/Bucket_sort_2.svg_.png" style="max-width: 800px;"/>
 
 1. 初始化桶：根据数据的范围和分布，创建若干个桶。 
 2. 分配元素：遍历待排序的列表，将每个元素分配到对应的桶中。 
@@ -490,7 +490,7 @@ func BucketSort(arr []float64) {
 - 总时间复杂度：O(n + k * m log m)，其中 n 是列表长度，k 是桶的数量，m 是每个桶的平均元素数量。
 
 ## 10.基数排序 (Radix Sort)
-![img](/other/radixSort.gif)
+<img src="https://www.runoob.com/wp-content/uploads/2019/03/radixSort.gif" style="max-width: 800px;"/>
 
 1. 确定最大位数：找到列表中最大数字的位数，确定需要排序的轮数。 
 2. 按位排序：从最低位开始，依次对每一位进行排序（通常使用计数排序或桶排序作为子排序算法）。 
