@@ -11,5 +11,6 @@ title: "Links"
 - [ailaart](https://mechabare.art/)
 - [fengfengzhidao](https://www.fengfengzhidao.com/)
 - [bing](https://blog.coldbin.top/)
+- [3ing](https://zhaoz3y.github.io/)
 
 > 欢迎在评论区或通过邮件申请交换友链。
