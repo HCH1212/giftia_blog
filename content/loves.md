@@ -5,8 +5,8 @@ title: "Loves"
 ### 番
 - 可塑性记忆（最喜欢艾拉了！）
 - 亚托莉
-- cl
-- ab
+- clannad
+- angel beats
 - air
 - 四谎
 - re0
@@ -58,6 +58,7 @@ title: "Loves"
 - 赛马娘
 - 寄生兽
 - 钢炼fa
+- 我的青春恋爱物语果然有问题
 
 ### 剧
 - 天气之子
