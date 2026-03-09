@@ -6,7 +6,7 @@ author: "giftia"
 description: ""
 draft: false
 categories: ["数据库"]
-tags: []
+tags: ["redis", "concurrency", "thundering-herd", "performance"]
 ---
 
 ## 什么是惊群效应

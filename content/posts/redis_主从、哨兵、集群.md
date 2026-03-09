@@ -6,7 +6,7 @@ author: "giftia"
 description: ""
 draft: false
 categories: ["数据库"]
-tags: []
+tags: ["redis", "replication", "sentinel", "cluster"]
 ---
 
 ## 主从模式

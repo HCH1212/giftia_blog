@@ -6,7 +6,7 @@ author: "giftia"
 description: ""
 draft: false
 categories: ["go"]
-tags: []
+tags: ["go", "heap", "data-structure", "stdlib"]
 ---
 
 go中堆的实现没有现成的大小根堆，需要实现相应的接口再初始化成堆

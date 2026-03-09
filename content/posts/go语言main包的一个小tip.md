@@ -6,7 +6,7 @@ author: "giftia"
 description: ""
 draft: false
 categories: ["go"]
-tags: []
+tags: ["go", "package", "main", "build"]
 ---
 
 # Go 应用中 package main 的规则

@@ -6,7 +6,7 @@ author: "giftia"
 description: ""
 draft: false
 categories: ["go"]
-tags: []
+tags: ["rpc", "kitex", "microservice", "go"]
 ---
 
 ## 什么是RPC

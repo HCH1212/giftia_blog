@@ -6,7 +6,7 @@ author: "giftia"
 description: ""
 draft: false
 categories: ["go"]
-tags: []
+tags: ["go", "gmp", "concurrency", "scheduler"]
 ---
 
 ## GMP 模型

@@ -6,7 +6,7 @@ author: "giftia"
 description: ""
 draft: false
 categories: ["技术"]
-tags: []
+tags: ["Git", "命令行", "版本控制"]
 ---
 
 **日常**：

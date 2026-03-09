@@ -6,7 +6,7 @@ author: "giftia"
 description: ""
 draft: false
 categories: ["技术"]
-tags: []
+tags: ["Git", "merge", "rebase", "版本控制"]
 ---
 
 ## git merge 与 git rebase 的区别

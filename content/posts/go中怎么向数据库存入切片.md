@@ -6,7 +6,7 @@ author: "giftia"
 description: ""
 draft: false
 categories: ["go"]
-tags: []
+tags: ["go", "database", "slice", "gorm"]
 ---
 
 ## 错误

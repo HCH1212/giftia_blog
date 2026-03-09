@@ -6,7 +6,7 @@ author: "giftia"
 description: ""
 draft: false
 categories: ["数据库"]
-tags: []
+tags: ["redis", "persistence", "rdb", "aof"]
 ---
 
 ## 1. Redis 持久化的目的

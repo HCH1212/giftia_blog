@@ -6,7 +6,7 @@ author: "giftia"
 description: ""
 draft: false
 categories: ["网络"]
-tags: []
+tags: ["http", "network", "http1-1", "http2"]
 ---
 
 ## http1.0

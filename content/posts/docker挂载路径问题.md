@@ -6,7 +6,7 @@ author: "giftia"
 description: ""
 draft: false
 categories: ["技术"]
-tags: []
+tags: ["Docker", "Volume", "容器", "运维"]
 ---
 
 # Docker Volume 挂载失效问题：为什么删除重建目录会导致容器找不到路径？

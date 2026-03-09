@@ -6,7 +6,7 @@ author: "giftia"
 description: ""
 draft: false
 categories: ["网络"]
-tags: []
+tags: ["HTTP", "Cookie", "Session", "Token", "鉴权"]
 ---
 
 | 特性 | Cookie | Session | Token |

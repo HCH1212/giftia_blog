@@ -6,7 +6,7 @@ author: "giftia"
 description: ""
 draft: false
 categories: ["数据库"]
-tags: []
+tags: ["MySQL", "事务", "ACID", "隔离级别"]
 ---
 
 ## acid

@@ -6,7 +6,7 @@ author: "giftia"
 description: ""
 draft: false
 categories: ["网络"]
-tags: []
+tags: ["websocket", "realtime", "network", "full-duplex"]
 ---
 
 ## 什么是WebSocket

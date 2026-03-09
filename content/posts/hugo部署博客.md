@@ -6,7 +6,7 @@ author: "giftia"
 description: ""
 draft: false
 categories: ["技术"]
-tags: []
+tags: ["hugo", "blog", "github", "deployment"]
 ---
 
 ## 前置条件

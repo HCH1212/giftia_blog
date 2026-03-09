@@ -6,7 +6,7 @@ author: "giftia"
 description: ""
 draft: false
 categories: ["go"]
-tags: []
+tags: ["go", "algorithm", "sorting", "data-structure"]
 ---
 
 ## 1.冒泡排序 (Bubble Sort)

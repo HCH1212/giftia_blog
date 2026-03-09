@@ -6,7 +6,7 @@ author: "giftia"
 description: ""
 draft: false
 categories: ["go"]
-tags: []
+tags: ["go", "concurrency", "sync-primitive", "channel"]
 ---
 
 ## go 并发原语

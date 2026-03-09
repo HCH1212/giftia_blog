@@ -6,7 +6,7 @@ author: "giftia"
 description: ""
 draft: false
 categories: ["数据库"]
-tags: []
+tags: ["redis", "cache", "cache-avalanche", "cache-penetration", "cache-breakdown"]
 ---
 
 ## 缓存的使用

@@ -6,7 +6,7 @@ author: "giftia"
 description: ""
 draft: false
 categories: ["go"]
-tags: []
+tags: ["go", "gc", "tri-color-marking", "memory"]
 ---
 
 ## 三色标记法

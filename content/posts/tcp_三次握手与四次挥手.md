@@ -6,7 +6,7 @@ author: "giftia"
 description: ""
 draft: false
 categories: ["网络"]
-tags: []
+tags: ["tcp", "three-way-handshake", "four-way-termination", "network"]
 ---
 
 ## 三次握手

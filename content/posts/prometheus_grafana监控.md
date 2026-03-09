@@ -6,7 +6,7 @@ author: "giftia"
 description: ""
 draft: false
 categories: ["技术"]
-tags: []
+tags: ["prometheus", "grafana", "monitoring", "ops"]
 ---
 
 这里的指标以进程导出的指标为例，环境是Linux

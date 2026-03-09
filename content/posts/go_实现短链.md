@@ -6,7 +6,7 @@ author: "giftia"
 description: ""
 draft: false
 categories: ["go"]
-tags: []
+tags: ["go", "short-url", "system-design", "redirect"]
 ---
 
 ## 为什么要短链

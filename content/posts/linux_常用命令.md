@@ -6,7 +6,7 @@ author: "giftia"
 description: ""
 draft: false
 categories: ["技术"]
-tags: []
+tags: ["linux", "cli", "shell", "ops"]
 ---
 
 1. **ls 列出目录内容**

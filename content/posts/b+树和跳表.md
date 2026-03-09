@@ -6,7 +6,7 @@ author: "giftia"
 description: ""
 draft: false
 categories: ["数据库"]
-tags: []
+tags: ["MySQL", "Redis", "B+树", "跳表"]
 ---
 
 ## b+树和跳表

@@ -6,7 +6,7 @@ author: "giftia"
 description: ""
 draft: false
 categories: ["go"]
-tags: []
+tags: ["go", "sync-map", "concurrency", "source-code"]
 ---
 
 ## sync.Map
