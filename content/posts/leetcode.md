@@ -1,12 +1,12 @@
 ﻿---
-title: 'Hoot100'
+title: 'Leetcode'
 date: 2026-03-09
 lastmod: 2026-03-09
 author: 'giftia'
-description: 'LeetCode hoot100'
+description: 'LeetCode'
 draft: false
 categories: ['go']
-tags: ['算法', 'LeetCode', 'Hoot100', 'Golang']
+tags: ['算法', 'LeetCode', 'go']
 ---
 
 ### 1
