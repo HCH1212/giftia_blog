@@ -6,7 +6,7 @@ author: "giftia"
 description: ""
 draft: false
 categories: ["数据库"]
-tags: ["redis", "redlock", "distributed-lock", "ha"]
+tags: ["redis", "redlock", "distributed-lock"]
 ---
 
 ## 什么是RedLock（红锁）
