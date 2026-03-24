@@ -44,7 +44,7 @@ title: "Loves"
 - little busters
 - 未来日记
 - eva
-- no game no life
+- 游戏人生
 - 为美好的世界向上祝福
 - 凉宫春日
 - 魔法少女小圆
