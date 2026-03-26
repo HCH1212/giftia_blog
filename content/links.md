@@ -12,6 +12,6 @@ title: "Links"
 - [fengfengzhidao](https://www.fengfengzhidao.com/)
 - [bing](https://blog.coldbin.top/)
 - [3ing](https://zhaoz3y.github.io/)
-- [wubingyue](http://www.moonic.site/)
+- [moonic](http://www.moonic.site/)
 
 > 欢迎在评论区或通过邮件申请交换友链。
