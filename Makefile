@@ -10,4 +10,4 @@ git:
 .PHONY: run
 
 run:
-	.\hugo.exe server -D
+	hugo server -D
