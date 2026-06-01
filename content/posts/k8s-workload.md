@@ -5,7 +5,7 @@ lastmod: 2026-03-24
 author: 'giftia'
 description: '理解 Kubernetes Workload 的核心模型、选型方法与实践建议。'
 draft: false
-categories: ['技术']
+categories: ['k8s']
 tags: ['Kubernetes', 'Workload', 'Deployment', 'StatefulSet', 'Job']
 ---
 
