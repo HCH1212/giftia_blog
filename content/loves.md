@@ -61,6 +61,7 @@ title: "Loves"
 - 我的青春恋爱物语果然有问题
 - another
 - 龙与虎
+- 赛博朋克
 
 ### anime movie
 - 天气之子
