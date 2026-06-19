@@ -62,6 +62,7 @@ title: "Loves"
 - another
 - 龙与虎
 - 赛博朋克
+- 天国大魔境
 
 ### anime movie
 - 天气之子
