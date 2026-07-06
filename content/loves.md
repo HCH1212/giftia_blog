@@ -2,7 +2,63 @@
 title: "Loves"
 ---
 
-### anime
+<style>
+.loves-category details {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.loves-category summary {
+  padding: 10px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  background: #f9fafb;
+  transition: background 0.2s;
+  list-style: none;
+}
+.loves-category summary::-webkit-details-marker {
+  display: none;
+}
+.loves-category summary:hover {
+  background: #f3f4f6;
+}
+.loves-category summary::before {
+  content: "▸";
+  display: inline-block;
+  margin-right: 8px;
+  transition: transform 0.2s;
+  font-size: 0.8em;
+  color: #9ca3af;
+}
+.loves-category details[open] > summary::before {
+  transform: rotate(90deg);
+}
+.loves-category .count {
+  font-weight: 400;
+  color: #9ca3af;
+  margin-left: 6px;
+  font-size: 0.9em;
+}
+.loves-category .list {
+  padding: 8px 16px 12px 16px;
+}
+.loves-category .list ul {
+  margin: 0;
+  padding-left: 20px;
+}
+.loves-category .list li {
+  margin: 3px 0;
+}
+</style>
+
+<div class="loves-category">
+
+<details open>
+<summary>anime <span class="count">(59)</span></summary>
+<div class="list">
+
 - 可塑性记忆（最喜欢艾拉了！）
 - 亚托莉
 - clannad
@@ -64,7 +120,13 @@ title: "Loves"
 - 赛博朋克
 - 天国大魔境
 
-### anime movie
+</div>
+</details>
+
+<details>
+<summary>anime movie <span class="count">(16)</span></summary>
+<div class="list">
+
 - 天气之子
 - 你的名字
 - 铃芽之旅
@@ -82,14 +144,26 @@ title: "Loves"
 - 超时空辉夜姬
 - 若能与你共乘海浪之上
 
-### cn anime
+</div>
+</details>
+
+<details>
+<summary>cn anime <span class="count">(5)</span></summary>
+<div class="list">
+
 - 龙族
 - 狐妖小红娘
 - 镇魂街
 - 尸兄
 - 王牌御史
 
-### galgame
+</div>
+</details>
+
+<details>
+<summary>galgame <span class="count">(22)</span></summary>
+<div class="list">
+
 - 可塑性记忆
 - 亚托莉
 - 缘之空
@@ -112,3 +186,8 @@ title: "Loves"
 - 君与彼女与彼女之恋
 - 为主人献上圣罗的甜蜜侍奉
 - 夏日口袋
+
+</div>
+</details>
+
+</div>

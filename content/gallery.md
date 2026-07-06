@@ -13,6 +13,12 @@ title: "Gallery"
   width: 100%;
   border-radius: 8px;
   object-fit: cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+.gallery-grid img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 </style>
 
