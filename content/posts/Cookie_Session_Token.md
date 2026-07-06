@@ -3,7 +3,7 @@ title: 'Cookie Session Token'
 date: 2026-01-05
 lastmod: 2026-01-05
 author: "giftia"
-description: ""
+description: "Cookie、Session、Token 三者的本质区别、存储位置、认证模式与使用场景对比"
 draft: false
 categories: ["网络"]
 tags: ["HTTP", "Cookie", "Session", "Token", "鉴权"]

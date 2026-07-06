@@ -3,7 +3,7 @@ title: '什么是RedLock'
 date: 2026-01-05
 lastmod: 2026-01-05
 author: "giftia"
-description: ""
+description: "Redis分布式锁RedLock算法的原理、优缺点及注意事项"
 draft: false
 categories: ["数据库"]
 tags: ["redis", "redlock", "distributed-lock"]
@@ -11,7 +11,7 @@ tags: ["redis", "redlock", "distributed-lock"]
 
 ## 什么是RedLock（红锁）
 - RedLock是一种分布式锁的实现算法，由Redis的创造者Antirez（Salvatore Sanfilippo）提出。这种算法旨在解决在分布式系统中安全地获取锁的问题，特别是在基于Redis这种内存数据结构服务器环境下。
-- RedLock提供了一种方法，用于在没有中心化锁服务的情况下，across多个Redis实例安全地协调锁。
+- RedLock提供了一种方法，用于在没有中心化锁服务的情况下，跨多个Redis实例安全地协调锁。
 
 ## RedLock算法的工作原理
 - RedLock算法的基本思想是使用多个独立的Redis实例来避免单点故障问题，算法的步骤如下：

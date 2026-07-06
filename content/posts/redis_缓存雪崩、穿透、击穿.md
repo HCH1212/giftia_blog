@@ -3,7 +3,7 @@ title: 'redis 缓存雪崩、穿透、击穿'
 date: 2026-01-05
 lastmod: 2026-01-05
 author: "giftia"
-description: ""
+description: "Redis 缓存雪崩、穿透、击穿的区别与 Go 代码解决方案及最佳实践"
 draft: false
 categories: ["数据库"]
 tags: ["redis", "cache", "cache-avalanche", "cache-penetration", "cache-breakdown"]

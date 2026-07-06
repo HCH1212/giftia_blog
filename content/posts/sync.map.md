@@ -3,9 +3,9 @@ title: 'sync.map'
 date: 2026-01-05
 lastmod: 2026-01-05
 author: "giftia"
-description: ""
+description: "Go sync.Map 的读写分离原理、延迟写入机制及与手动加锁 map 的性能对比"
 draft: false
-categories: ["go"]
+categories: ["Go"]
 tags: ["go", "sync-map", "concurrency", "source-code"]
 ---
 

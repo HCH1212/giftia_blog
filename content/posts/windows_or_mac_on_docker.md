@@ -3,9 +3,9 @@ title: 'windows or mac on docker'
 date: 2026-01-05
 lastmod: 2026-01-05
 author: "giftia"
-description: ""
+description: "在 Docker 中运行 Windows/Mac 虚拟机的轻量方案：基于 dockurr/windows 镜像"
 draft: false
-categories: ["技术"]
+categories: ["运维"]
 tags: ["docker", "virtualization", "windows", "linux"]
 ---
 

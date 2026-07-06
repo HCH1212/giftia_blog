@@ -3,7 +3,7 @@ title: 'acid 脏读、幻读、不可重复读 事务隔离级别'
 date: 2026-01-05
 lastmod: 2026-01-05
 author: "giftia"
-description: ""
+description: "数据库ACID特性、脏读/幻读/不可重复读问题及MySQL事务隔离级别详解"
 draft: false
 categories: ["数据库"]
 tags: ["MySQL", "事务", "ACID", "隔离级别"]
@@ -40,6 +40,9 @@ tags: ["MySQL", "事务", "ACID", "隔离级别"]
 
 * 获取当前事务隔离级别：
 ```sql
+-- MySQL 8.0+
+SELECT @@transaction_isolation;
+-- MySQL 5.7 及以下
 SELECT @@tx_isolation;
 ```
 * 设置事务隔离级别：

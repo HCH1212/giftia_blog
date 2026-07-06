@@ -3,9 +3,9 @@ title: 'linux 常用命令'
 date: 2026-01-05
 lastmod: 2026-01-05
 author: "giftia"
-description: ""
+description: "Linux 常用命令速查：涵盖文件、进程、网络、权限、包管理等 41 条高频命令"
 draft: false
-categories: ["技术"]
+categories: ["运维"]
 tags: ["linux", "cli", "shell", "ops"]
 ---
 

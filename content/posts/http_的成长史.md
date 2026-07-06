@@ -3,7 +3,7 @@ title: 'http 的成长史'
 date: 2026-01-05
 lastmod: 2026-01-05
 author: "giftia"
-description: ""
+description: "HTTP/0.9 到 HTTP/3 的演进史：各版本核心特性、协议变化及性能改进"
 draft: false
 categories: ["网络"]
 tags: ["http", "network", "http1-1", "http2"]
@@ -48,4 +48,4 @@ tags: ["http", "network", "http1-1", "http2"]
 安全性|	不安全|	不安全|	安全（TLS）|	安全（TLS）
 
 
-参考: <https://zhuanlan.zhihu.com/p/266578819>
+参考：<https://zhuanlan.zhihu.com/p/266578819>

@@ -3,9 +3,9 @@ title: 'Go中堆的实现'
 date: 2026-02-16
 lastmod: 2026-02-16
 author: "giftia"
-description: ""
+description: "Go container/heap 包的使用方法：实现小根堆/大根堆的 Interface 接口及注意事项"
 draft: false
-categories: ["go"]
+categories: ["Go"]
 tags: ["go", "heap", "data-structure", "stdlib"]
 ---
 

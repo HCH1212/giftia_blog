@@ -3,9 +3,9 @@ title: 'docker挂载路径问题'
 date: 2026-01-05
 lastmod: 2026-01-05
 author: "giftia"
-description: ""
+description: "Docker bind mount 基于 inode 的挂载原理及删除重建目录导致挂载失效的解决方案"
 draft: false
-categories: ["技术"]
+categories: ["运维"]
 tags: ["Docker", "Volume", "容器", "运维"]
 ---
 

@@ -3,7 +3,7 @@ title: 'tcp 三次握手与四次挥手'
 date: 2026-01-05
 lastmod: 2026-01-05
 author: "giftia"
-description: ""
+description: "TCP 三次握手与四次挥手的过程、状态流转及 TIME_WAIT 的作用详解"
 draft: false
 categories: ["网络"]
 tags: ["tcp", "three-way-handshake", "four-way-termination", "network"]

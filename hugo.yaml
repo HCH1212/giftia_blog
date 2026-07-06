@@ -22,7 +22,7 @@ frontmatter:
 # 分页与 URL
 # ===============================
 pagination:
-  pagerSize: 5
+  pagerSize: 10
 
 permalinks:
   posts: "/posts/:year/:month/:slug/"

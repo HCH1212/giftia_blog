@@ -5,7 +5,7 @@ lastmod: 2026-05-16
 author: "giftia"
 description: "剖析Celery多队列阻塞问题"
 draft: false
-categories: ["技术"]
+categories: ["运维"]
 tags: ["Celery", "异步任务", "消息队列", "性能优化", "高并发", "生产环境"]
 ---
 

@@ -3,7 +3,7 @@ title: 'Tcp拥塞控制算法之bbr'
 date: 2026-01-20
 lastmod: 2026-01-20
 author: "giftia"
-description: ""
+description: "TCP BBR 拥塞控制算法的原理、工作阶段及与传统算法的对比分析"
 draft: false
 categories: ["网络"]
 tags: ["tcp", "bbr", "congestion-control", "network"]

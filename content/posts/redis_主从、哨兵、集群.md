@@ -3,7 +3,7 @@ title: 'redis 主从、哨兵、集群'
 date: 2026-01-05
 lastmod: 2026-01-05
 author: "giftia"
-description: ""
+description: "Redis主从复制、哨兵模式与集群模式的架构对比及优缺点分析"
 draft: false
 categories: ["数据库"]
 tags: ["redis", "replication", "sentinel", "cluster"]
@@ -46,7 +46,7 @@ tags: ["redis", "replication", "sentinel", "cluster"]
 
 ### 集群模式缺点
 - 单个节点的主从切换，仍会有瞬断情况。
-- 集群模式需要依赖外部的服务发现组件，如Zookeeper，Consul。
+- 集群模式不支持跨 slot 的多键操作，业务设计时需要合理规划 key 的分布。
 - 集群模式需要做复杂的配置，如主从复制的配置，读写分离的配置等。
 
-参考: <https://juejin.cn/post/6844904191236767751>
+参考：<https://juejin.cn/post/6844904191236767751>

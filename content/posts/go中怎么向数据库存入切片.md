@@ -3,9 +3,9 @@ title: 'go中怎么向数据库存入切片'
 date: 2026-01-05
 lastmod: 2026-01-05
 author: "giftia"
-description: ""
+description: "Go语言中使用GORM向数据库存入切片的两种方案：JSON格式与自定义Scanner/Valuer类型"
 draft: false
-categories: ["go"]
+categories: ["Go"]
 tags: ["go", "database", "slice", "gorm"]
 ---
 
@@ -35,7 +35,7 @@ type DataIndicators struct {
 }
 ```
 
-用上诉两种方式存储都会报错,因为不支持存储空切片（作为指针类型，相当于出现了空指针）
+用上述两种方式存储都会报错,因为不支持存储空切片（作为指针类型，相当于出现了空指针）
 
 
 ## 解决

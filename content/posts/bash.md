@@ -5,7 +5,7 @@ lastmod: 2026-04-16
 author: "giftia"
 description: "Bash 基础指南：从入门到实用，涵盖基础命令、变量、条件判断、循环、函数及脚本编写。"
 draft: false
-categories: ["技术"]
+categories: ["运维"]
 tags: ["Bash", "Linux", "Shell", "脚本"]
 ---
 

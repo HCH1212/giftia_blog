@@ -3,13 +3,13 @@ title: 'go语言main包的一个小tip'
 date: 2026-01-05
 lastmod: 2026-01-05
 author: "giftia"
-description: ""
+description: "Go语言package main的使用规则及多文件编译问题的解决方案"
 draft: false
-categories: ["go"]
+categories: ["Go"]
 tags: ["go", "package", "main", "build"]
 ---
 
-# Go 应用中 package main 的规则
+## Go 应用中 package main 的规则
 
 ## package
 
@@ -17,7 +17,7 @@ tags: ["go", "package", "main", "build"]
 
 ## 规则
 
-1. import 导入的是相对路径，非 package 名！
+1. import 导入的是导入路径（import path），即模块路径下的子路径，而非 package 名！
 2. 习惯上将 package 名和目录名保持一致，如实例中 package A 尽量在./A 文件夹下
 3. 代码中引用包方法 / 对象 / 变量时，如调用 package A 中的 a 函数，使用 A.a 而非目录名
 4. 同一目录下，所有源文件必须使用相同的包名，一个文件夹下只能有一个 package；如果多个文件夹下有同名 package，其实只是彼此无关的 package，如果需要同时使用不同目录下的同名 package，import 时需要为每个目录指定 package 别名：

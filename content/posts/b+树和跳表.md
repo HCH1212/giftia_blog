@@ -3,7 +3,7 @@ title: 'b+树和跳表'
 date: 2026-01-05
 lastmod: 2026-01-05
 author: "giftia"
-description: ""
+description: "B+树与跳表的数据结构原理、性能对比及在数据库索引中的应用"
 draft: false
 categories: ["数据库"]
 tags: ["MySQL", "Redis", "B+树", "跳表"]

@@ -5,7 +5,7 @@ lastmod: 2026-03-03
 author: "giftia"
 description: "Kubernetes 入门概念与常用 kubectl 命令示例。"
 draft: false
-categories: ["k8s"]
+categories: ["运维"]
 tags: ["Kubernetes", "K8s", "容器"]
 ---
 

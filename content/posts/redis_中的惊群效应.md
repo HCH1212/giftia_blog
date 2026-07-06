@@ -3,7 +3,7 @@ title: 'redis 中的惊群效应'
 date: 2026-01-05
 lastmod: 2026-01-05
 author: "giftia"
-description: ""
+description: "Redis 惊群效应的成因、Redis 6.0 优化及客户端退避等解决策略"
 draft: false
 categories: ["数据库"]
 tags: ["redis", "concurrency", "thundering-herd", "performance"]

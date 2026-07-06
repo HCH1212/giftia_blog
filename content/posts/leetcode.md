@@ -5,7 +5,7 @@ lastmod: 2026-03-09
 author: 'giftia'
 description: 'LeetCode'
 draft: false
-categories: ['go']
+categories: ['Go']
 tags: ['算法', 'LeetCode', 'go']
 ---
 

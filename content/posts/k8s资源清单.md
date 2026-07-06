@@ -5,7 +5,7 @@ lastmod: 2026-06-01
 author: "giftia"
 description: "用最小例子理解 Kubernetes 资源清单（YAML）怎么写、怎么用。"
 draft: false
-categories: ["k8s"]
+categories: ["运维"]
 tags: ["Kubernetes", "YAML", "Deployment", "Service"]
 ---
 

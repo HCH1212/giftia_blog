@@ -3,9 +3,9 @@ title: 'GMP 模型'
 date: 2026-01-05
 lastmod: 2026-01-05
 author: "giftia"
-description: ""
+description: "Go 运行时调度器 GMP 模型的核心架构：Goroutine、Machine、Processor 的关系与调度机制"
 draft: false
-categories: ["go"]
+categories: ["Go"]
 tags: ["go", "gmp", "concurrency", "scheduler"]
 ---
 
