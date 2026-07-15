@@ -139,26 +139,22 @@
     transition: background 0.06s ease;
   }
 
-  /* 小屏适配：图标按钮，避免与图片重叠 */
+  /* 小屏适配：紧凑但不隐藏文字 */
   @media (max-width: 480px) {
     .mermaid-toolbar {
       top: 0.75rem;
       right: 0.75rem;
-      gap: 0.3rem;
-      padding: 0.25rem;
+      gap: 0.35rem;
+      padding: 0.2rem;
       border-radius: 12px;
     }
     .mermaid-toolbar button {
-      padding: 0.45rem;
-      gap: 0;
-      border-radius: 9px;
-    }
-    .mermaid-toolbar button span {
-      display: none;
+      padding: 0.35rem 0.65rem;
+      font-size: 0.78rem;
     }
     .mermaid-toolbar button svg {
-      width: 17px;
-      height: 17px;
+      width: 15px;
+      height: 15px;
     }
     .mermaid-overlay.active {
       padding-top: 3.5rem;
