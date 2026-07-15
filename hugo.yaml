@@ -15,7 +15,7 @@ enableGitInfo: true  # 配合 lastmod 使用
 # 自动日期更新逻辑 (解决 lastmod 不更新)
 # ===============================
 frontmatter:
-  lastmod: [":fileModTime", "lastmod", ":git", "date"]
+  lastmod: [":git", "lastmod", ":fileModTime", "date"]
   date: ["date", "publishDate", "lastmod"]
 
 # ===============================

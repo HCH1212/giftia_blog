@@ -1,7 +1,6 @@
 ---
 title: 'Prometheus_grafana监控'
 date: 2026-01-20
-lastmod: 2026-01-20
 author: "giftia"
 description: "使用 process-exporter 导出进程指标，Prometheus 采集并配合 Grafana 可视化监控的完整搭建指南"
 draft: false

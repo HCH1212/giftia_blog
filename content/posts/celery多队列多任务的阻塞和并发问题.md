@@ -1,7 +1,6 @@
 ---
 title: 'celery多队列多任务的阻塞和并发问题'
 date: 2026-05-16
-lastmod: 2026-05-16
 author: "giftia"
 description: "剖析 Celery 多队列阻塞问题的原因与解决方案"
 draft: false

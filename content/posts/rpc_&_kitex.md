@@ -1,7 +1,6 @@
 ---
 title: 'rpc & kitex'
 date: 2026-01-05
-lastmod: 2026-01-05
 author: "giftia"
 description: "RPC协议原理、gRPC简介及字节跳动Kitex框架的快速入门与生产环境配置指南"
 draft: false

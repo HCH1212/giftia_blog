@@ -1,7 +1,6 @@
 ---
 title: 'W-TinyLFU：Caffeine 的高命中率缓存淘汰算法'
 date: 2026-07-14
-lastmod: 2026-07-14
 author: "giftia"
 description: "详解 W-TinyLFU 缓存淘汰算法：Window Cache + TinyLFU 如何在高命中率与低内存开销之间取得平衡"
 draft: false

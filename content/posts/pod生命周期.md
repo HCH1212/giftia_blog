@@ -1,7 +1,6 @@
 ---
 title: 'Pod生命周期'
 date: 2026-06-01
-lastmod: 2026-06-01
 author: "giftia"
 description: "以三种探针为主线，理解 Pod 生命周期中的健康检查与流量切换。"
 draft: false

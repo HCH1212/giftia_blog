@@ -1,7 +1,6 @@
 ---
 title: 'redis数据持久化'
 date: 2026-01-05
-lastmod: 2026-01-05
 author: "giftia"
 description: "Redis RDB 与 AOF 持久化机制的原理、优缺点及 RDB+AOF 混合持久化的生产最佳实践"
 draft: false

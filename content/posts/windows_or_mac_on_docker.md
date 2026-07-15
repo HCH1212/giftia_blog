@@ -1,7 +1,6 @@
 ---
 title: 'Docker 运行 Windows/Mac 虚拟机'
 date: 2026-01-05
-lastmod: 2026-01-05
 author: "giftia"
 description: "在 Docker 中运行 Windows/Mac 虚拟机的轻量方案"
 draft: false

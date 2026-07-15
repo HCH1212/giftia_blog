@@ -1,7 +1,6 @@
 ---
 title: 'go语言main包的一个小tip'
 date: 2026-01-05
-lastmod: 2026-01-05
 author: "giftia"
 description: "Go语言package main的使用规则及多文件编译问题的解决方案"
 draft: false

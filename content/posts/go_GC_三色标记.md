@@ -1,7 +1,6 @@
 ---
 title: 'go GC 三色标记'
 date: 2026-01-05
-lastmod: 2026-01-05
 author: "giftia"
 description: "Go GC 三色标记法的原理、写屏障机制及强弱三色不变式的详解"
 draft: false

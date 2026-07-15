@@ -1,7 +1,6 @@
 ---
 title: 'go 并发原语'
 date: 2026-01-05
-lastmod: 2026-01-05
 author: "giftia"
 description: "Go 语言并发原语全景：goroutine、channel、select、Mutex、WaitGroup 等"
 draft: false

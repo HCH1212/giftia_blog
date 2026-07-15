@@ -1,7 +1,6 @@
 ---
 title: 'Countdown轮询+看门狗兜底'
 date: 2026-07-13
-lastmod: 2026-07-13
 author: "giftia"
 description: "异步任务中countdown轮询与看门狗兜底机制的设计与实战"
 draft: false

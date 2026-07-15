@@ -1,7 +1,6 @@
 ---
 title: 'Go的singleflight'
 date: 2026-07-14
-lastmod: 2026-07-14
 author: "giftia"
 description: "golang.org/x/sync/singleflight 的原理、用法及在防止缓存击穿场景的实践"
 draft: false

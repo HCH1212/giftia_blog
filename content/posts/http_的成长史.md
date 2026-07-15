@@ -1,7 +1,6 @@
 ---
 title: 'http 的成长史'
 date: 2026-01-05
-lastmod: 2026-01-05
 author: "giftia"
 description: "HTTP/1.0 到 HTTP/3 的演进史：各版本核心特性、协议变化及性能改进"
 draft: false

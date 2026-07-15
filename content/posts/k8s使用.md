@@ -1,7 +1,6 @@
 ---
 title: "K8s基础使用"
 date: 2026-03-03
-lastmod: 2026-03-03
 author: "giftia"
 description: "Kubernetes 入门概念与常用 kubectl 命令示例。"
 draft: false

@@ -1,7 +1,6 @@
 ---
 title: 'go 实现十大经典排序算法'
 date: 2026-01-05
-lastmod: 2026-01-05
 author: "giftia"
 description: "十大经典排序算法的 Go 语言实现：冒泡、快排、归并、堆排等含完整可运行代码"
 draft: false

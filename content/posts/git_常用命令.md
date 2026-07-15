@@ -1,7 +1,6 @@
 ---
 title: 'git 常用命令'
 date: 2026-01-05
-lastmod: 2026-01-05
 author: "giftia"
 description: "Git 常用命令速查：初始化、分支、合并、标签、撤销、暂存、远程协作等高频操作"
 draft: false

@@ -1,7 +1,6 @@
 ---
 title: 'websocket 理论与实践'
 date: 2026-01-05
-lastmod: 2026-01-05
 author: "giftia"
 description: "WebSocket 协议原理、握手流程及 Go 语言实战案例详解"
 draft: false

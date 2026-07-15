@@ -1,7 +1,6 @@
 ---
 title: 'git 分支合并'
 date: 2026-01-05
-lastmod: 2026-01-05
 author: "giftia"
 description: "git merge 与 rebase、reset 与 revert 的区别及适用场景"
 draft: false

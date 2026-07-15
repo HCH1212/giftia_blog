@@ -1,7 +1,6 @@
 ---
 title: 'acid 脏读、幻读、不可重复读 事务隔离级别'
 date: 2026-01-05
-lastmod: 2026-01-05
 author: "giftia"
 description: "数据库ACID特性、脏读/幻读/不可重复读问题及MySQL事务隔离级别详解"
 draft: false

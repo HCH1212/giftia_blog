@@ -1,7 +1,6 @@
 ---
 title: 'Bash'
 date: 2026-04-16
-lastmod: 2026-04-16
 author: "giftia"
 description: "Bash 基础速查：基础命令、变量、条件判断、循环、函数及脚本编写。"
 draft: false

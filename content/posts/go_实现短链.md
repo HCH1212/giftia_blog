@@ -1,7 +1,6 @@
 ---
 title: 'go 实现短链'
 date: 2026-01-05
-lastmod: 2026-01-05
 author: "giftia"
 description: "Go 语言实现短链服务：Base62 编码、哈希冲突处理与完整的代码示例"
 draft: false

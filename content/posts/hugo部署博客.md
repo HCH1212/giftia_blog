@@ -1,7 +1,6 @@
 ---
 title: 'Hugo部署博客'
 date: 2026-01-03
-lastmod: 2026-01-03
 author: "giftia"
 description: "使用 Hugo + GitHub Pages 搭建个人博客的完整部署流程与配置要点"
 draft: false

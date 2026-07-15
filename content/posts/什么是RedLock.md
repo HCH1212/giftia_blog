@@ -1,7 +1,6 @@
 ---
 title: '什么是RedLock'
 date: 2026-01-05
-lastmod: 2026-01-05
 author: "giftia"
 description: "Redis 分布式锁 RedLock 算法的原理与注意事项"
 draft: false

@@ -1,7 +1,6 @@
 ---
 title: 'K8s资源清单'
 date: 2026-06-01
-lastmod: 2026-06-01
 author: "giftia"
 description: "用最小例子理解 Kubernetes 资源清单（YAML）怎么写、怎么用。"
 draft: false

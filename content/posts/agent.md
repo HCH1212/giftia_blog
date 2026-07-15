@@ -1,7 +1,6 @@
 ---
 title: 'Agent'
 date: 2026-07-09
-lastmod: 2026-07-09
 author: "giftia"
 description: "从 Function Call 到 A2A，理清 Agent 的核心概念与生态协议。"
 draft: false

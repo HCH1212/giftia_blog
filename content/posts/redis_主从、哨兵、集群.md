@@ -1,7 +1,6 @@
 ---
 title: 'redis 主从、哨兵、集群'
 date: 2026-01-05
-lastmod: 2026-01-05
 author: "giftia"
 description: "Redis主从复制、哨兵模式与集群模式的架构对比及优缺点分析"
 draft: false

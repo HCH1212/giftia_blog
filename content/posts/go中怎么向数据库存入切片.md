@@ -1,7 +1,6 @@
 ---
 title: 'go中怎么向数据库存入切片'
 date: 2026-01-05
-lastmod: 2026-01-05
 author: "giftia"
 description: "Go语言中使用GORM向数据库存入切片的两种方案：JSON格式与自定义Scanner/Valuer类型"
 draft: false

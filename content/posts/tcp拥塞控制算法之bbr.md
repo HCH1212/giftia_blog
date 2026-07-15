@@ -1,7 +1,6 @@
 ---
 title: 'TCP 拥塞控制算法之 BBR'
 date: 2026-01-20
-lastmod: 2026-01-20
 author: "giftia"
 description: "TCP BBR 拥塞控制算法的原理、工作阶段及与 CUBIC 的性能对比"
 draft: false
