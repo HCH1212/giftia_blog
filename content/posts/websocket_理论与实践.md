@@ -30,8 +30,8 @@ WebSocket是一种通信协议，它是HTML5开始提供的一种协议。它实
 
 ## WebSocket的流程
 ![img](/other/websocket.png)
-from 小白Debug
 
+from 小白Debug
 
 ## WebSocket的go语言实现
 1. 安装gorilla/websocket库

@@ -9,7 +9,7 @@ categories: ["Go"]
 tags: ["go", "heap", "data-structure", "stdlib"]
 ---
 
-go中堆的实现没有现成的大小根堆，需要实现相应的接口再初始化成堆
+Go 中没有现成的大/小根堆，需要实现 `heap.Interface` 接口后再初始化。
 
 ## 接口源码
 

@@ -9,28 +9,6 @@ categories: ["数据库"]
 tags: ["redis", "cache", "cache-avalanche", "cache-penetration", "cache-breakdown"]
 ---
 
-## 缓存的使用
-```go
-func GetData(key string) (string, error) {
-    // 先查询缓存
-    value, err := redisClient.Get(key).Result()
-    if err == nil {
-        return value, nil
-    } else if err == redis.Nil {
-        // 缓存失效，从数据库查询
-        data, err := db.GetData(key)
-        if err != nil {
-            return "", err
-        }
-        // 缓存到redis
-        redisClient.Set(key, data, 30*time.Minute)
-        return data, nil
-    } else {
-        return "", err
-    }
-}
-```
-
 ## 三个问题
 
 ### 缓存击穿

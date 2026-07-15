@@ -44,5 +44,4 @@ tags: ["go", "gc", "tri-color-marking", "memory"]
 - **栈区没有写屏障**
 - 栈区的黑色对象新增引用白色对象，直接标记为黑色。（删除时不变，等下一次 GC）
 
-
 参考：<https://www.bilibili.com/video/BV1SLtVe7EDR?vd_source=1fc15dfc7872eca10bc43b8ee8d73958>

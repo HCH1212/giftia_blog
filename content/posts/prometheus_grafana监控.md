@@ -9,10 +9,9 @@ categories: ["运维"]
 tags: ["prometheus", "grafana", "monitoring", "ops"]
 ---
 
-这里的指标以进程导出的指标为例，环境是Linux
-<https://github.com/ncabatoff/process-exporter>
+环境：Linux，以进程指标采集为例。
 
-## 一. 导出指标
+## 导出指标（process-exporter）
 
 1. 安装
 
@@ -53,7 +52,7 @@ process_names:
 curl http://localhost:9256/metrics
 ```
 
-## 二. prometheus采集指标
+## Prometheus 采集指标
 
 1. 安装
 
@@ -85,7 +84,7 @@ scrape_configs:
 
 在query栏中输入查询指标就可获取对应数据
 
-## 三. [grafana](https://zhida.zhihu.com/search?content_id=265994044&content_type=Article&match_order=1&q=grafana&zhida_source=entity)可视化配置
+## Grafana 可视化配置
 
 1. 安装
 
@@ -111,7 +110,7 @@ cd grafana-12.2.1
 - 配置数据源：
     - Name: Prometheus
     - URL: http://localhost:9090（如果 Grafana 和 Prometheus 在同一台机器）
-- 点击底部的 "Save & Test"，看到绿色的 ✅ "Successfully queried the Prometheus API." 即成功
+- 点击底部的 "Save & Test"，看到成功提示即完成
 
 4. 仪表板配置
 

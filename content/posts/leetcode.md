@@ -1,4 +1,4 @@
-﻿---
+---
 title: 'Leetcode'
 date: 2026-03-09
 lastmod: 2026-03-09
@@ -3013,5 +3013,3 @@ func orangesRotting(grid [][]int) int {
 	return res
 }
 ```
-
-

@@ -9,13 +9,12 @@ categories: ["数据库"]
 tags: ["MySQL", "事务", "ACID", "隔离级别"]
 ---
 
-## acid
-1. 原子性（Atomicity）：事务是一个不可分割的工作单位，事务中包括的诸操作要么都做，要么都不做。
-2. 一致性（Consistency）：事务必须是数据库从一个一致性状态变到另一个一致性状态。
-3. 隔离性（Isolation）：一个事务的执行不能被其他事务干扰。
-4. 持久性（Durability）：一个事务一旦提交，它对数据库中数据的改变就应该是永久性的。
+## ACID
 
-> 以下都是基于多个事务并发访问同一数据导致的问题。
+- **原子性（Atomicity）**：事务不可分割，操作要么全部成功，要么全部失败
+- **一致性（Consistency）**：事务前后数据库保持一致状态
+- **隔离性（Isolation）**：并发事务互不干扰
+- **持久性（Durability）**：事务提交后数据永久保存
 
 ## 脏读（假数据）
 一个事务读取到了其他事务未提交的数据。
@@ -27,25 +26,20 @@ tags: ["MySQL", "事务", "ACID", "隔离级别"]
 同一事务中多次查询同一范围的数据，前后查询结果数量不同。（事务2执行insert/delete 数据量变化）
 
 ## 事务隔离级别
-读未提交、读已提交、可重复读（mysql默认）、串行化。
 
 | 隔离级别 | 脏读 | 不可重复读 | 幻读 |
-|----------|------|-----------|------|
-| READ-UNCOMMITTED | √ | √ | √ |
-| READ-COMMITTED | × | √ | √ |
-| REPEATABLE-READ | × | × | √ (×innodb) |
+|---|---|---|---|
+| READ UNCOMMITTED | √ | √ | √ |
+| READ COMMITTED | × | √ | √ |
+| REPEATABLE READ（MySQL 默认） | × | × | √（InnoDB 可避免） |
 | SERIALIZABLE | × | × | × |
 
-> 对于innodb, RR级别下，可以避免幻读。（不过可能有快照读和当前读，还是有可能发生幻读）
+> InnoDB 在 RR 级别下可以避免幻读，但快照读与当前读混用时仍可能出现幻读。
 
-* 获取当前事务隔离级别：
 ```sql
--- MySQL 8.0+
+-- 查看隔离级别（MySQL 8.0+）
 SELECT @@transaction_isolation;
--- MySQL 5.7 及以下
-SELECT @@tx_isolation;
-```
-* 设置事务隔离级别：
-```sql
+
+-- 设置隔离级别
 SET SESSION TRANSACTION ISOLATION LEVEL READ-COMMITTED;
 ```

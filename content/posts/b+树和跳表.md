@@ -9,11 +9,9 @@ categories: ["数据库"]
 tags: ["MySQL", "Redis", "B+树", "跳表"]
 ---
 
-## b+树和跳表
-- mysql 中使用 b+ 树来存储数据。
-- redis 的有序集合使用跳表来实现。
+MySQL 使用 B+ 树存储数据，Redis 有序集合使用跳表实现。
 
-## b+树
+## B+树
 ![img](/other/b+.png)
 
 - 只有叶子节点才存储数据，中间节点只存储索引。

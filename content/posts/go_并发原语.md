@@ -9,7 +9,6 @@ categories: ["Go"]
 tags: ["go", "concurrency", "sync-primitive", "channel"]
 ---
 
-## go 并发原语
 ![img](/other/sync.png)
 
 参考：<https://www.bilibili.com/video/BV1D7tfeCENG?vd_source=1fc15dfc7872eca10bc43b8ee8d73958>

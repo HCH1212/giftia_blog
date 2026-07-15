@@ -37,5 +37,3 @@ tags: ["tcp", "three-way-handshake", "four-way-termination", "network"]
 
 time_wait 的作用?
 - 第四次挥手时，客户端发送给服务端的 ACK 有可能丢失，如果服务端因为某些原因而没有收到 ACK 的话，服务端就会重发 FIN，如果客户端在 2*MSL 的时间内收到了 FIN，就会重新发送 ACK 并再次等待 2MSL，防止 Server 没有收到 ACK 而不断重发 FIN。
-
-参考：<https://javaguide.cn/cs-basics/network/tcp-connection-and-disconnection.html>
