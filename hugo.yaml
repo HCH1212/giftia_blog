@@ -44,7 +44,7 @@ params:
   rss: true
 
   # 功能开关
-  disableHLJS: false            # 代码高亮
+  disableHLJS: true             # 使用 Hugo Chroma 内置高亮，禁用 highlight.js
   disablePostNavigation: true   # 上/下一篇文章导航
   monoDarkIcon: true            # 暗色模式下单色图标
   showSummary: true             # 首页显示摘要
