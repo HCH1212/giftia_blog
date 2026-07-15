@@ -1,0 +1,259 @@
+<!-- mermaid.html -->
+{{- if or site.Params.mermaid .Params.mermaid -}}
+<style>
+  .mermaid {
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem 0;
+    margin: 1.5rem 0;
+    cursor: pointer;
+    transition: opacity 0.15s;
+    position: relative;
+  }
+  .mermaid:hover {
+    opacity: 0.85;
+  }
+  .mermaid::before {
+    content: "双击可放大";
+    position: absolute;
+    top: 0;
+    right: 0.5rem;
+    font-size: 0.7rem;
+    color: #aaa;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+  }
+  .mermaid:hover::before {
+    opacity: 1;
+  }
+
+  /* 全屏遮罩 */
+  .mermaid-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    cursor: zoom-out;
+  }
+  .mermaid-overlay.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+  }
+  .mermaid-overlay-inner {
+    width: 100%;
+    height: 100%;
+    max-width: 95vw;
+    max-height: 90vh;
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    cursor: default;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    /* grid 默认 stretch + place-items center 让 SVG 撑满并居中 */
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+  }
+  .dark .mermaid-overlay-inner {
+    background: #1e1e1e;
+  }
+  .mermaid-overlay-inner svg {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain;
+  }
+
+  /* 工具栏 */
+  .mermaid-toolbar {
+    position: fixed;
+    top: 1.25rem;
+    right: 1.25rem;
+    z-index: 10001;
+    display: none;
+    gap: 0.5rem;
+  }
+  .mermaid-toolbar.active {
+    display: flex;
+  }
+  .mermaid-toolbar button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    color: #fff;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .mermaid-toolbar button:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+</style>
+
+<!-- 全屏遮罩层 -->
+<div class="mermaid-overlay" id="mermaid-overlay">
+  <div class="mermaid-overlay-inner" id="mermaid-overlay-inner"></div>
+</div>
+
+<!-- 全屏工具栏 -->
+<div class="mermaid-toolbar" id="mermaid-toolbar">
+  <button id="mermaid-copy-btn" type="button">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+    </svg>
+    <span>复制图片</span>
+  </button>
+  <button id="mermaid-close-btn" type="button">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="18" y1="6" x2="6" y2="18"/>
+      <line x1="6" y1="6" x2="18" y2="18"/>
+    </svg>
+    <span>关闭</span>
+  </button>
+</div>
+
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'default',
+    flowchart: { htmlLabels: true, curve: 'basis' },
+    themeVariables: { fontSize: '14px' },
+  });
+</script>
+<script>
+  /* Hugo 将 ```mermaid 渲染为 <pre><code class="language-mermaid">，
+     需要转为 mermaid 能识别的 <div class="mermaid"> */
+  Array.from(document.getElementsByClassName('language-mermaid')).forEach((el) => {
+    el.parentElement.outerHTML = `<div class="mermaid">${el.innerHTML}</div>`;
+  });
+
+  const overlay = document.getElementById('mermaid-overlay');
+  const overlayInner = document.getElementById('mermaid-overlay-inner');
+  const toolbar = document.getElementById('mermaid-toolbar');
+
+  /* ===== 双击全屏 ===== */
+  document.addEventListener('dblclick', (e) => {
+    const mermaidDiv = e.target.closest('.mermaid');
+    if (!mermaidDiv) return;
+    const svg = mermaidDiv.querySelector('svg');
+    if (!svg) return;
+
+    const clone = svg.cloneNode(true);
+    clone.removeAttribute('width');
+    clone.removeAttribute('height');
+
+    overlayInner.innerHTML = '';
+    overlayInner.appendChild(clone);
+
+    overlay.classList.add('active');
+    toolbar.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  });
+
+  function closeMermaidFullscreen() {
+    overlay.classList.remove('active');
+    toolbar.classList.remove('active');
+    document.body.style.overflow = '';
+    overlayInner.innerHTML = '';
+    /* 重置复制按钮状态 */
+    if (copyTimer) {
+      clearTimeout(copyTimer);
+      copyTimer = null;
+    }
+    copyLabel.textContent = copyDefaultText;
+  }
+
+  /* 点击遮罩背景关闭 */
+  overlay.addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) closeMermaidFullscreen();
+  });
+
+  /* 关闭按钮 */
+  document.getElementById('mermaid-close-btn').addEventListener('click', closeMermaidFullscreen);
+
+  /* ESC 关闭 */
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMermaidFullscreen();
+  });
+
+  /* ===== 复制为 PNG 图片 ===== */
+  async function svgToPngBlob(svg) {
+    const clone = svg.cloneNode(true);
+
+    /* 获取原始 SVG 尺寸，兜底 */
+    let w = parseInt(clone.getAttribute('width')) || clone.viewBox?.baseVal?.width || 800;
+    let h = parseInt(clone.getAttribute('height')) || clone.viewBox?.baseVal?.height || 600;
+
+    /* 2 倍渲染保持清晰 */
+    const scale = 2;
+    clone.setAttribute('width', w * scale);
+    clone.setAttribute('height', h * scale);
+
+    const svgStr = new XMLSerializer().serializeToString(clone);
+    const dataUrl = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgStr);
+
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = w * scale;
+        canvas.height = h * scale;
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0);
+        canvas.toBlob((b) => resolve(b), 'image/png');
+      };
+      img.onerror = reject;
+      img.src = dataUrl;
+    });
+  }
+
+  const copyBtn = document.getElementById('mermaid-copy-btn');
+  const copyLabel = copyBtn.querySelector('span');
+  const copyDefaultText = '复制图片';
+  let copyTimer = null;
+
+  copyBtn.addEventListener('click', async () => {
+    /* 正在复制中 / 刚复制完等恢复，忽略连击 */
+    if (copyTimer) return;
+
+    const svg = overlayInner.querySelector('svg');
+    if (!svg) return;
+
+    copyLabel.textContent = '复制中...';
+
+    let ok = false;
+    try {
+      const blob = await svgToPngBlob(svg);
+      await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+      ok = true;
+    } catch {
+      ok = false;
+    }
+
+    /* 如果在等待期间全屏已关闭，不再更新文字（closeMermaidFullscreen 已重置） */
+    if (!overlay.classList.contains('active')) return;
+
+    copyLabel.textContent = ok ? '已复制' : '复制失败';
+
+    copyTimer = setTimeout(() => {
+      copyLabel.textContent = copyDefaultText;
+      copyTimer = null;
+    }, 1500);
+  });
+</script>
+{{- end -}}

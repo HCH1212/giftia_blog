@@ -34,6 +34,9 @@ params:
   # 风格：linen / wheat / gray / light
   color: "linen"
 
+  # Mermaid 图表全局开关
+  mermaid: true
+
   # 个人信息
   avatar: "https://hch1212.github.io/images/giftia.png"
   name: "giftia"
