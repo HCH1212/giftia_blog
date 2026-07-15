@@ -19,6 +19,30 @@ tags: ["HTTP", "Cookie", "Session", "Token", "鉴权"]
 | **存储大小** | 极小，通常 4KB | 较大，取决于服务器资源 | 可大可小，取决于存储的数据，通常为几十到几百字节 |
 | **使用场景**| 网站个性化、跟踪用户行为、存储不敏感数据 | 传统 Web 应用的登录、购物车等需要存储大量会话数据的场景 | API 认证、移动应用、前后端分离应用、微服务架构 |
 
+### 认证流程对比
+
+```mermaid
+sequenceDiagram
+    participant B as 浏览器
+    participant S as 服务器
+    participant DB as 数据库
+
+    Note over B,DB: Session 认证（有状态）
+    B->>S: POST /login (用户名+密码)
+    S->>DB: INSERT session (session_id, user_data)
+    S-->>B: Set-Cookie: session_id=xxx
+    B->>S: GET /api Cookie: session_id=xxx
+    S->>DB: SELECT session WHERE id=xxx
+    S-->>B: 返回数据
+
+    Note over B,DB: Token 认证（无状态）
+    B->>S: POST /login (用户名+密码)
+    S-->>B: { "token": "eyJ..." }
+    B->>S: GET /api Authorization: Bearer eyJ...
+    Note over S: JWT 本地验签，无需查库
+    S-->>B: 返回数据
+```
+
 ### 三者之间的关系总结
 
 1.  **Cookie 和 Session 的关系**：

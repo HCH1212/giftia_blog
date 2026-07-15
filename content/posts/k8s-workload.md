@@ -94,6 +94,19 @@ Pod 是最小调度单位，但它是易失的：
 
 ## 如何选型
 
+```mermaid
+flowchart TD
+    START[选择 Workload] --> Q1{持续在线服务?}
+    Q1 -->|是| Q2{依赖稳定身份/存储?}
+    Q1 -->|否| Q3{每个节点都运行一份?}
+    Q2 -->|是| SS[StatefulSet]
+    Q2 -->|否| DEP[Deployment]
+    Q3 -->|是| DS[DaemonSet]
+    Q3 -->|否| Q4{一次性执行后结束?}
+    Q4 -->|是| JOB[Job]
+    Q4 -->|否| CJ[CronJob]
+```
+
 一个实用决策顺序：
 
 1. 是否是持续在线服务？是则优先 `Deployment` 或 `StatefulSet`。

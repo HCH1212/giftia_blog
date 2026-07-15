@@ -85,19 +85,30 @@
   .mermaid-toolbar button {
     display: inline-flex;
     align-items: center;
-    gap: 0.35rem;
-    padding: 0.5rem 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(12px);
-    color: #fff;
-    font-size: 0.85rem;
+    gap: 0.4rem;
+    padding: 0.55rem 1.1rem;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    color: #fff !important;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1;
     cursor: pointer;
-    transition: background 0.2s;
+    user-select: none;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
   }
   .mermaid-toolbar button:hover {
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.22);
+    border-color: rgba(255, 255, 255, 0.45);
+    transform: scale(1.04);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  }
+  .mermaid-toolbar button:active {
+    transform: scale(0.97);
+    transition: transform 0.08s ease;
   }
 </style>
 

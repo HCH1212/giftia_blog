@@ -10,6 +10,26 @@ tags: ["go", "sync-map", "concurrency"]
 
 ## 核心原理
 
+```mermaid
+flowchart TB
+    subgraph 读路径["读路径 (Load)"]
+        R1[读请求] --> R2{read 命中?}
+        R2 -->|是| R3["返回 value (无锁)"]
+        R2 -->|否| R4["查找 dirty (加锁)<br/>miss++"]
+        R4 --> R5{miss 次数 ≥ dirty 长度?}
+        R5 -->|是| R6["dirty 晋升为 read<br/>原 dirty 置 nil (O(1) 指针替换)"]
+    end
+    
+    subgraph 写路径["写路径 (Store/Delete, 均加锁)"]
+        W1[Store] --> W2{read 中有此 key?}
+        W2 -->|是| W3["更新 read (atomic)"]
+        W2 -->|否| W4{dirty 为 nil?}
+        W4 -->|是| W5["遍历 read, 拷贝有效条目到 dirty"]
+        W4 -->|否| W6["直接写入 dirty"]
+        W5 --> W6
+    end
+```
+
 sync.Map 适用于**读多写少**场景，通过读写分离提升性能：
 
 - **读写分离**：内部维护只读字典（read）和读写字典（dirty）。读操作优先访问 read，miss 时才查 dirty。

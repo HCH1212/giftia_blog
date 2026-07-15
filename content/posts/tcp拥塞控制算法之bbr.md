@@ -41,6 +41,19 @@ sudo sysctl -w net.ipv4.tcp_congestion_control=bbr
 
 ### 四个阶段
 
+```mermaid
+stateDiagram-v2
+    [*] --> STARTUP: 启动
+    STARTUP --> DRAIN: 带宽不再增长
+    DRAIN --> PROBE_BW: 队列排空
+    PROBE_BW --> PROBE_RTT: 需要刷新 RTprop<br/>(每10秒)
+    PROBE_RTT --> PROBE_BW: 完成探测
+    
+    note right of STARTUP: 指数增长探测 BtlBw
+    note right of PROBE_BW: 稳态: 周期性小幅探速<br/>6个周期为一组
+    note right of PROBE_RTT: 短暂降速刷新最小 RTT
+```
+
 BBR 状态机循环：STARTUP → DRAIN → PROBE_BW → PROBE_RTT → ...
 
 以开车类比：

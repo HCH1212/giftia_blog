@@ -12,6 +12,26 @@ tags: ["redis", "concurrency", "thundering-herd", "performance"]
 
 惊群效应是指在多线程/多进程环境中，当多个进程/线程同时等待同一个资源（如Redis中的某个键）时，一旦该资源可用（如键被设置或过期），所有等待者都被唤醒，但最终只有一个能成功获取资源，其他进程/线程必须重新进入等待状态，造成系统资源的浪费。
 
+```mermaid
+sequenceDiagram
+    participant C1 as 客户端1
+    participant C2 as 客户端2
+    participant C3 as 客户端3
+    participant R as Redis
+    participant DB as 数据库
+
+    Note over C1,DB: 缓存过期，惊群发生
+    C1->>R: GET hot-key → nil (过期)
+    C2->>R: GET hot-key → nil (过期)
+    C3->>R: GET hot-key → nil (过期)
+    
+    C1->>DB: 查询数据
+    C2->>DB: 查询数据
+    C3->>DB: 查询数据
+    
+    Note over DB: 数据库收到 3 次重复查询
+```
+
 ## Redis中的惊群场景
 
 1. **键过期通知**：当某个键过期时，多个客户端可能都在等待这个事件

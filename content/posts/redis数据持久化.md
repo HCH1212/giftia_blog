@@ -11,6 +11,17 @@ tags: ["redis", "persistence", "rdb", "aof"]
 ## RDB 持久化
 RDB 是 Redis 默认的持久化方式，它是一种快照（snapshot）持久化。
 
+```mermaid
+flowchart TB
+    P["Redis 父进程<br/>接收 BGSAVE 命令"] -->|fork| C["子进程"]
+    P -->|"继续处理请求<br/>(写时复制 COW)"| P2["修改数据时<br/>OS 自动复制数据页"]
+    
+    C -->|"共享父进程<br/>内存快照"| C2["遍历内存数据"]
+    C2 -->|写入| T["临时 RDB 文件"]
+    T -->|原子 rename| D["dump.rdb"]
+    D -->|通知| P
+```
+
 **核心原理：**
 - RDB 会在指定的时间间隔内，将 Redis 在内存中的所有数据以二进制文件的形式写入硬盘。这个文件通常命名为 `dump.rdb`。整个过程可以理解为对 Redis 内存数据做了一次全量备份。
 
