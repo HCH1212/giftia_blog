@@ -1,0 +1,109 @@
+/* ================================
+   Chroma Syntax Highlighting (One Dark Pro)
+   Overrides themes/paper/assets/custom.css
+   ================================ */
+
+.chroma{color:#bcc5d0;background-color:#282c34}
+.chroma .err{color:#f38ba8}
+.chroma .lnlinks{outline:none;text-decoration:none;color:inherit}
+.chroma .lntd{vertical-align:top;padding:0;margin:0;border:0}
+.chroma .lntable{border-spacing:0;padding:0;margin:0;border:0}
+.chroma .hl{background-color:#383d48}
+.chroma .lnt{white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em;color:#6a6f78}
+.chroma .ln{white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em;color:#6a6f78}
+.chroma .line{display:flex}
+
+/* keywords - purple */
+.chroma .k{color:#d485e7}
+.chroma .kd{color:#d485e7}
+.chroma .kn{color:#d485e7}
+.chroma .kp{color:#d485e7}
+.chroma .kr{color:#d485e7}
+
+/* types - cyan-blue */
+.chroma .kt{color:#5abed3}
+
+/* constants (True/False/None) - blue */
+.chroma .kc{color:#70baf4}
+
+/* functions/methods/decorators - yellow */
+.chroma .nf{color:#efc776}
+.chroma .fm{color:#efc776}
+.chroma .nd{color:#efc776}
+
+/* classes/namespaces - green */
+.chroma .nc{color:#a8cf84}
+.chroma .nn{color:#a8cf84}
+
+/* strings - orange-red */
+.chroma .s{color:#e97880}
+.chroma .sa{color:#e97880}
+.chroma .sb{color:#e97880}
+.chroma .sc{color:#e97880}
+.chroma .dl{color:#e97880}
+.chroma .sd{color:#e97880}
+.chroma .s2{color:#e97880}
+.chroma .se{color:#e97880}
+.chroma .sh{color:#e97880}
+.chroma .si{color:#e97880}
+.chroma .sx{color:#e97880}
+.chroma .sr{color:#e97880}
+.chroma .s1{color:#e97880}
+.chroma .ss{color:#e97880}
+
+/* numbers - blue */
+.chroma .m{color:#70baf4}
+.chroma .mb{color:#70baf4}
+.chroma .mf{color:#70baf4}
+.chroma .mh{color:#70baf4}
+.chroma .mi{color:#70baf4}
+.chroma .il{color:#70baf4}
+.chroma .mo{color:#70baf4}
+
+/* builtin constants - blue */
+.chroma .no{color:#70baf4}
+
+/* variables/params/attributes - cyan */
+.chroma .n{color:#62c4ce}
+.chroma .na{color:#62c4ce}
+.chroma .nv{color:#62c4ce}
+.chroma .vc{color:#62c4ce}
+.chroma .vg{color:#62c4ce}
+.chroma .vi{color:#62c4ce}
+.chroma .vm{color:#62c4ce}
+.chroma .py{color:#62c4ce}
+.chroma .ni{color:#62c4ce}
+.chroma .ne{color:#62c4ce}
+.chroma .nl{color:#62c4ce}
+.chroma .nt{color:#62c4ce}
+
+/* other names - default gray */
+.chroma .nx{color:#bcc5d0}
+
+/* builtin functions (len/make etc) - yellow */
+.chroma .nb{color:#efc776}
+.chroma .bp{color:#efc776}
+
+/* operators */
+.chroma .o{color:#62c4ce}
+.chroma .ow{color:#d485e7}
+
+/* comments - gray */
+.chroma .c{color:#8e939e;font-style:italic}
+.chroma .ch{color:#8e939e;font-style:italic}
+.chroma .cm{color:#8e939e;font-style:italic}
+.chroma .c1{color:#8e939e;font-style:italic}
+.chroma .cs{color:#8e939e;font-style:italic}
+.chroma .cp{color:#8e939e;font-style:italic}
+.chroma .cpf{color:#8e939e;font-style:italic}
+
+/* generic semantics */
+.chroma .gd{color:#e97880;background-color:#3a2a2a}
+.chroma .ge{font-style:italic}
+.chroma .gr{color:#e97880}
+.chroma .gh{color:#efc776;font-weight:bold}
+.chroma .gi{color:#a8cf84;background-color:#2a3a2a}
+.chroma .gs{font-weight:bold}
+.chroma .gu{color:#efc776;font-weight:bold}
+.chroma .gt{color:#e97880}
+.chroma .gl{text-decoration:underline}
