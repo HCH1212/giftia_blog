@@ -1,4 +1,4 @@
----
+﻿---
 title: 'go 实现十大经典排序算法'
 date: 2026-01-05
 author: "giftia"
@@ -226,6 +226,8 @@ import (
 )
 
 func main() {
+	rand.Seed(time.Now().UnixNano()) // 只初始化一次随机种子
+
 	in := []int{3, 8, 4, 4, 9, 2}
 	QuickSort(in, 0, len(in)-1)
 	fmt.Println(in) // 输出: [2 3 4 4 8 9]
@@ -242,7 +244,6 @@ func QuickSort(arr []int, left, right int) {
 	}
 
 	// 随机选择基准点
-	rand.Seed(time.Now().UnixNano())
 	index := rand.Intn(right-left+1) + left
 	pivot := arr[index]
 	// 将基准点交换到最右侧，简化分区逻辑
@@ -270,7 +271,6 @@ func QuickSortPlus(arr []int, left, right int) {
 	}
 
 	// 随机选择基准点
-	rand.Seed(time.Now().UnixNano())
 	index := rand.Intn(right-left+1) + left
 	pivot := arr[index]
 
