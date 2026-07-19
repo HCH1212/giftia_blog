@@ -116,3 +116,5 @@ BBR 状态机循环：STARTUP → DRAIN → PROBE_BW → PROBE_RTT → ...
 | 适用场景 | 数据中心内部 | 跨国通信、移动网络、直播 |
 
 **关键结论**：延迟抖动是 BBR 的克星；>100ms 延迟或 >7% 丢包时 BBR 优势明显。
+
+参考：<https://zhuanlan.zhihu.com/p/1967287093978989642>
