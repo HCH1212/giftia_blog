@@ -120,6 +120,7 @@ title: "Loves"
 - 赛博朋克
 - 天国大魔境
 - 想要成为影之实力者
+- School Days
 
 </div>
 </details>
