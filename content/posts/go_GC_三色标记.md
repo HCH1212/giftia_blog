@@ -44,3 +44,4 @@ tags: ["go", "gc", "tri-color-marking", "memory"]
 - 对当前栈帧的直接写入通常不生成写屏障；但通过可能指向堆的指针写入栈时，编译器仍可能生成写屏障。GC 会扫描各 goroutine 的栈，不能将栈中新引用简单理解为“直接标记为黑色”，也不会因为省略部分栈写屏障就必然等到下一次 GC。
 
 参考：<https://www.bilibili.com/video/BV1SLtVe7EDR?vd_source=1fc15dfc7872eca10bc43b8ee8d73958>
+
