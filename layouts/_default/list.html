@@ -12,7 +12,7 @@
 {{- end -}}
 
 <!-- 按最后修改时间降序排列 -->
-{{- $pages = $pages.ByLastmod.Reverse -}}
+{{- $pages = sort $pages "Lastmod" "desc" -}}
 
 <!-- Articles -->
 {{- $paginator := .Paginate $pages -}} {{- range $index, $page :=
