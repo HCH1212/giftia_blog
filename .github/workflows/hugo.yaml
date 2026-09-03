@@ -24,7 +24,7 @@ jobs:
 
       # 步骤3：构建Hugo产物（生成public目录）
       - name: 构建Hugo网站
-        run: hugo --minify
+        run: hugo --enableGitInfo --minify
 
       # 步骤4：跨仓库部署到 hch1212.github.io 仓库（已修正参数名）
       - name: 部署到Pages仓库
