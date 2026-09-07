@@ -1,0 +1,66 @@
+{{- if and .IsPage (gt (len .Fragments.Headings) 0) -}}
+<aside class="post-toc not-prose" data-post-toc>
+  <details open>
+    <summary>目录</summary>
+    {{- .TableOfContents -}}
+  </details>
+</aside>
+
+<script>
+  (() => {
+    const toc = document.querySelector('[data-post-toc]');
+    const content = document.querySelector('[data-post-content]');
+    if (!toc || !content) return;
+
+    const links = [...toc.querySelectorAll('a[href^="#"]')];
+    const getTargetId = (link) => {
+      const rawId = link.getAttribute('href').slice(1);
+      try {
+        return decodeURIComponent(rawId);
+      } catch {
+        return rawId;
+      }
+    };
+    const headings = links
+      .map((link) => document.getElementById(getTargetId(link)))
+      .filter(Boolean);
+    if (!headings.length) return;
+
+    const setActive = (id) => {
+      links.forEach((link) => {
+        const active = getTargetId(link) === id;
+        link.classList.toggle('is-active', active);
+        if (active) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+    };
+
+    let frame = 0;
+    const updateActive = () => {
+      frame = 0;
+      const marker = window.scrollY + window.innerHeight * 0.24;
+      let current = headings[0];
+      headings.forEach((heading) => {
+        if (heading.getBoundingClientRect().top + window.scrollY <= marker) current = heading;
+      });
+      setActive(current.id);
+    };
+
+    const scheduleUpdate = () => {
+      if (!frame) frame = requestAnimationFrame(updateActive);
+    };
+
+    window.addEventListener('scroll', scheduleUpdate, { passive: true });
+    window.addEventListener('resize', scheduleUpdate);
+    links.forEach((link) => {
+      link.addEventListener('click', () => {
+        if (window.matchMedia('(max-width: 1199px)').matches) {
+          const details = toc.querySelector('details');
+          if (details) details.open = false;
+        }
+      });
+    });
+    updateActive();
+  })();
+</script>
+{{- end -}}

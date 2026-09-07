@@ -84,6 +84,10 @@ markup:
   goldmark:
     renderer:
       unsafe: true # 允许 Markdown 中使用 HTML
+  tableOfContents:
+    startLevel: 2
+    endLevel: 4
+    ordered: false
   highlight:
     noClasses: false
 
