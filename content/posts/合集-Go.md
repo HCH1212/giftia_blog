@@ -16,3 +16,12 @@ tags: []
 ## make 和 new 的区别
 - new 初始化任意数据类型并返回指针
 - make 初始化 slice/channel/map，返回可用的数据结构本身
+
+## slice 底层
+
+## map 底层
+
+## channel 底层
+
+## interface 底层
+
