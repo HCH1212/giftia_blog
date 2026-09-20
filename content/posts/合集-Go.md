@@ -33,3 +33,26 @@ tags: []
 ## interface 底层
 - iface：带方法的接口
 - eface：空接口
+
+## 互斥锁的实现
+```go
+type Mutex struct {
+    state int32  // 状态位
+    sema  uint32 // 信号量
+}
+```
+- 原子操作加减 state
+- sema 用于阻塞/唤醒协程
+
+## 锁的两种状态
+- 普通：新来的竞争者通常会和队头抢锁，新的正在占用 cpu，所以一般都能抢到
+- 饥饿：新来的也必须在队尾排队
+- 某个等待者超过 1ms 没拿到锁就进入饥饿模式；队头等待时间小于 1ms 就进入普通模式（或队列为空）
+
+## sync.map
+- 适用读多写少
+- 空间换时间，读写分离
+- 读：先读 read map，没有就加锁读 dirty map
+- 写：key 已存在就直接写 read map，新 key 就加锁写 dirty map
+- 同步：read map 未命中达到一定次数后，dirty 升级为 read，然后等下一次写入时再 copy 一个 dirty
+
