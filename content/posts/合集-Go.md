@@ -54,5 +54,5 @@ type Mutex struct {
 - 空间换时间，读写分离
 - 读：先读 read map，没有就加锁读 dirty map
 - 写：key 已存在就直接写 read map，新 key 就加锁写 dirty map
-- 同步：read map 未命中达到一定次数后，dirty 升级为 read，然后等下一次写入时再 copy 一个 dirty
+- 同步：read map 未命中次数 >= len(dirty) 时，dirty 升级为 read，然后等下一次写入时再 copy 一个 dirty
 
