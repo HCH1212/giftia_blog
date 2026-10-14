@@ -122,6 +122,7 @@ title: "Loves"
 - 想要成为影之实力者
 - School Days
 - 夏日重现
+- 虫师
 
 </div>
 </details>
