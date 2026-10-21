@@ -68,3 +68,41 @@ type Mutex struct {
 协程池的核心目的不是“复用资源”，而是“限制不可控的并发量”
 - worker 数量：控制同时执行任务的最大协程数
 - channel 缓冲大小：控制最多允许多少任务排队等待
+
+## panic 的捕获
+- 同一协程
+- recover 必须在 defer func 函数内
+1. 不能捕获
+```go
+func main() {
+	defer recover()
+	panic("")
+}
+```
+2. 能捕获
+```go
+func main() {
+    defer func() {
+        if r := recover(); r != nil {
+            fmt.Println("recovered:", r)
+        }
+    }()
+    panic("")
+}
+```
+
+## defer 时机
+```go
+func main() {
+    defer fmt.Println("A")
+    run()
+    defer fmt.Println("C")
+    fmt.Println("D")
+}
+
+func run() {
+    defer fmt.Println("B")
+}
+```
+正确输出：BDCA（defer只在当前函数作用域内）
+
