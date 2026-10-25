@@ -106,3 +106,43 @@ func run() {
 ```
 正确输出：BDCA（defer只在当前函数作用域内）
 
+# 三个 goroutine，一只能打印 A，二只能打印 B，三只能打印 C
+```go
+package main
+
+import "fmt"
+
+func main() {
+	chA := make(chan struct{})
+	chB := make(chan struct{})
+	chC := make(chan struct{})
+
+	go func() {
+		for {
+			<-chA
+			fmt.Print("A")
+			chB <- struct{}{}
+		}
+	}()
+
+	go func() {
+		for {
+			<-chB
+			fmt.Print("B")
+			chC <- struct{}{}
+		}
+	}()
+
+	go func() {
+		for {
+			<-chC
+			fmt.Print("C")
+			chA <- struct{}{}
+		}
+	}()
+
+	chA <- struct{}{} // 启动
+	select {}         // 阻塞，保持程序运行
+}
+```
+
