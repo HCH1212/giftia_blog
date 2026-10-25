@@ -106,7 +106,8 @@ func run() {
 ```
 正确输出：BDCA（defer只在当前函数作用域内）
 
-# 三个 goroutine，一只能打印 A，二只能打印 B，三只能打印 C
+## goroutine channel
+三个 goroutine，一只能打印 A，二只能打印 B，三只能打印 C，如此循环
 ```go
 package main
 
