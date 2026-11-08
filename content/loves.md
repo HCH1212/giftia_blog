@@ -14,7 +14,7 @@ title: "Loves"
   font-weight: 600;
   cursor: pointer;
   user-select: none;
-  background: #f9fafb;
+  background: transparent;
   transition: background 0.2s;
   list-style: none;
 }
